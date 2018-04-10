@@ -10,8 +10,16 @@
 - Able to pass props from page to another
 
 ### 04/09/18
-- Side project for user-auth build about
+- Side project for user-auth build out
   - built mongodb and initial user routes, built userSchema
   - got username/password checking on login page with database
   - fixed async issues with login pack
   - started building createUser file
+
+### 04/10/2018
+- Side project for user-auth build out
+  - built POST function for new users on front end
+  - built password check to make sure password and confirm password match
+  - started building check on front-end to make sure new user's username doesn't already exist
+  - decided to refactor and build username check on the back end
+  - started building middleware for check, but encountering blob errors
