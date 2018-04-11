@@ -1,12 +1,19 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { StackNavigator } from 'react-navigation';
+import LandingPage from './Comp/LandingPage.js';
 import Login from './Comp/Login.js';
 import MyPage from './Comp/MyPage.js';
 import CreateUser from './Comp/CreateUser.js';
 
+
+
 const RootStack =
   StackNavigator({
+    LandingPage: {
+      name: "LandingPage",
+      screen: LandingPage,
+    },
     Login: {
       name: "Login",
       screen: Login,
@@ -20,7 +27,7 @@ const RootStack =
       screen: CreateUser,
     },
   },
-  {initialRouteName: 'Login'}
+  {initialRouteName: 'LandingPage'}
 )
 
 export default class App extends React.Component {

@@ -28,3 +28,7 @@
 - Ian fixed blob errors on user auth side project, create user works and is all handles through back end
 - Build back-end routes for login page
 - refactored login.js so checks are happening on back-end
+- Integrated side project into main project with successful user auth
+- Installed sinon, chai, enzyme, and enzyme-adapter-react for testing suite
+- Refactored testing suite into individual pages for each Component
+- Created and tested landing page
