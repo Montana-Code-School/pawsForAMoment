@@ -23,3 +23,8 @@
   - started building check on front-end to make sure new user's username doesn't already exist
   - decided to refactor and build username check on the back end
   - started building middleware for check, but encountering blob errors
+
+### 04/11/2018
+- Ian fixed blob errors on user auth side project, create user works and is all handles through back end
+- Build back-end routes for login page
+- refactored login.js so checks are happening on back-end
