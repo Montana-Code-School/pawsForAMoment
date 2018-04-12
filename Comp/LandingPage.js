@@ -14,12 +14,7 @@ export default class LandingPage extends React.Component {
   render() {
     return(
       <View>
-        <NavBar />
-        <TouchableOpacity
-          onPress = {()=>{this.props.navigation.navigate('Login')}}
-        >
-          <Text>Login</Text>
-        </TouchableOpacity>
+        <NavBar navigation={this.props.navigation}/>
         <Text>Find a Friend</Text>
       </View>
     )

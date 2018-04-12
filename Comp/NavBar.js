@@ -14,12 +14,18 @@ export default class NavBar extends React.Component {
     console.log(this.props);
     return(
       <View style={styles.container}>
-      <TouchableOpacity
-        onPress = {()=>{this.props.navigation.navigate('Login')}}
-        style={styles.loginButton}
-      >
-        <Text>Login</Text>
-      </TouchableOpacity>
+        <TouchableOpacity
+          onPress={()=>{this.props.navigation.navigate('Login')}}
+          style={styles.loginButton}
+        >
+          <Text>Login</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress = {()=>{this.props.navigation.navigate('LandingPage')}}
+          style={styles.landingPageButton}
+        >
+          <Text>Home</Text>
+        </TouchableOpacity>
       </View>
     )
   }
@@ -35,5 +41,11 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignSelf: 'flex-end',
     paddingRight: 20,
+  },
+  landingPageButton: {
+    display: 'flex',
+    alignSelf: 'flex-start',
+    paddingLeft: 20,
+    paddingBottom: 20,
   }
 });

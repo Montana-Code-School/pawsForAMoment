@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 import { StackNavigator } from 'react-navigation';
+import NavBar from './NavBar.js';
 
 export default class CreateUser extends React.Component {
   constructor(props) {
@@ -50,6 +51,7 @@ export default class CreateUser extends React.Component {
   render() {
     return(
       <View>
+      <NavBar navigation={this.props.navigation}/>
       <Text>Username: </Text>
       <TextInput
         onChangeText={(username) => this.setState({username: username})}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { StackNavigator } from 'react-navigation';
+import NavBar from './NavBar.js';
 
 export default class MyPage extends React.Component {
   render() {
@@ -9,6 +10,7 @@ export default class MyPage extends React.Component {
 
     return(
       <View>
+      <NavBar navigation={this.props.navigation}/>
         <Text>Welcome back, {username}!</Text>
       </View>
     )

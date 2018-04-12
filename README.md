@@ -2,6 +2,7 @@
 
 Paws For A Moment is a mobile application that aggregates animal shelters across the state of Montana.
 
+## Daily Workflow Logs
 ### 04/05/18:
 - Implemented Travis CI testing
 - Installed Create-React-Native-App
@@ -34,3 +35,9 @@ Paws For A Moment is a mobile application that aggregates animal shelters across
 - Installed sinon, chai, enzyme, and enzyme-adapter-react for testing suite
 - Refactored testing suite into individual pages for each Component
 - Created and tested landing page
+
+### 04/12/2018
+- Created NavBar.js
+- Added navbar to stack and implemented on all pages
+- Added Login and Home buttons to navbar with working functionality that takes you to login page and landing page respectively
+- Currently struggling with flex styling of navbar  
