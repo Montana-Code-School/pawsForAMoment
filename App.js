@@ -1,15 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { StyleSheet, Text, View } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import LandingPage from './Comp/LandingPage.js';
 import Login from './Comp/Login.js';
 import MyPage from './Comp/MyPage.js';
 import CreateUser from './Comp/CreateUser.js';
-
-
+import NavBar from './Comp/NavBar.js';
 
 const RootStack =
   StackNavigator({
+    NavBar: {
+      name: "Navbar",
+      screen: NavBar,
+    },
     LandingPage: {
       name: "LandingPage",
       screen: LandingPage,
@@ -31,8 +35,6 @@ const RootStack =
 )
 
 export default class App extends React.Component {
-  //this.state({username:"Harry" || "", isLogged:true || false})
-  //basic login setup thing
   render() {
     return (
       <View style={styles.container}>

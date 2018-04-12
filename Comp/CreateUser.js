@@ -28,9 +28,9 @@ export default class CreateUser extends React.Component {
         })
       })
       .then((res) => {
-        if(res.status != 401){
+        if(res.status != 401) {
           this.props.navigation.navigate('Login');
-        }else{
+        } else {
           this.setState({message:"User already exists!"})
         }
         return res;

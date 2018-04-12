@@ -30,7 +30,6 @@ userAuthRouter.use((req, res, next) => {
   })
 });
 
-
 createUserRouter.use((req, res, next) => {
     console.log('something is happening');
     return UserSchema.findOne({username: req.body.username}, (userErr, username) => {
