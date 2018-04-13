@@ -1,19 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button, TouchableOpacity, YellowBox } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import LandingPage from './Comp/LandingPage.js';
 import Login from './Comp/Login.js';
 import MyPage from './Comp/MyPage.js';
 import CreateUser from './Comp/CreateUser.js';
-import NavBar from './Comp/NavBar.js';
 
 const RootStack =
   StackNavigator({
-    NavBar: {
-      name: "Navbar",
-      screen: NavBar,
-    },
     LandingPage: {
       name: "LandingPage",
       screen: LandingPage,
@@ -31,7 +26,9 @@ const RootStack =
       screen: CreateUser,
     },
   },
-  {initialRouteName: 'LandingPage'}
+  {
+    initialRouteName: 'LandingPage'
+  },
 )
 
 export default class App extends React.Component {
@@ -50,3 +47,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
 });
+
+console.disableYellowBox = true;

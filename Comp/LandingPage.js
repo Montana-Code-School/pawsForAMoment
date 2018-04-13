@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, TextInput, TouchableOpacity } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import NavBar from './NavBar';
 
 export default class LandingPage extends React.Component {
   constructor(props) {
@@ -11,10 +10,32 @@ export default class LandingPage extends React.Component {
     }
   }
 
+    static navigationOptions = ({ navigation }) => {
+      return {
+        headerTitle: 'PawsForAMoment',
+        headerRight: (
+          <View>
+          <Button
+            onPress = {() => navigation.navigate('Login')}
+            title = 'Login'/>
+          <Button
+            onPress = {() => navigation.navigate('LandingPage')}
+            title = 'Home'/>
+          </View>
+        ),
+        headerStyle: {
+          backgroundColor: "#42dcf4"
+        },
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+
+      }
+    }
+
   render() {
     return(
       <View>
-        <NavBar navigation={this.props.navigation}/>
         <Text>Find a Friend</Text>
       </View>
     )
