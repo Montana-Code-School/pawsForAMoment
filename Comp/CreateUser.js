@@ -6,10 +6,32 @@ export default class CreateUser extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      username: 'enter here',
-      password: 'enter here',
-      checkPassword: 'enter here',
+      username: '',
+      password: '',
+      checkPassword: '',
       message: '',
+    }
+  }
+
+  static navigationOptions = ({ navigation }) => {
+    return {
+      headerTitle: 'PawsForAMoment',
+      headerRight: (
+        <View>
+        <Button
+          onPress = {() => navigation.navigate('Login')}
+          title = 'Login'/>
+        <Button
+          onPress = {() => navigation.navigate('LandingPage')}
+          title = 'Home'/>
+        </View>
+      ),
+      headerStyle: {
+        backgroundColor: "#42dcf4"
+      },
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
     }
   }
 
@@ -55,18 +77,24 @@ export default class CreateUser extends React.Component {
         onChangeText={(username) => this.setState({username: username})}
         value={this.state.username}
         autoCapitalize = 'none'
+        placeholder = 'Enter here'
+
       />
       <Text>Password: </Text>
       <TextInput
         onChangeText={(password) => this.setState({password: password})}
         value={this.state.password}
         autoCapitalize = 'none'
+        placeholder = 'Enter here'
+
       />
       <Text>Confirm Password: </Text>
       <TextInput
         onChangeText={(password) => this.setState({checkPassword: password})}
         value={this.state.checkPassword}
         autoCapitalize = 'none'
+        placeholder = 'Enter here'
+
       />
       <Button
         title="Submit"

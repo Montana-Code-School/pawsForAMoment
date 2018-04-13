@@ -1,6 +1,26 @@
 # Paws For A Moment (arms of an angle)
 
-Paws For A Moment is a mobile application that aggregates animal shelters across the state of Montana.
+## Paws For A Moment is a mobile application that aggregates animal shelters across the state of Montana.
+
+______
+
+#### If you're new to PawsForAMoment...
+- Clone the repo
+- npm install on both the front and back ends.
+  - front-end is in the main pawsForAMoment folder
+  - back-end is in the server folder
+- in order to run the app on your local server, you will need to simultaneously run 2 terminals (one for both the front and back ends)
+  - on the front-end: run
+    `npm start`
+  - on the back-end: cd into server and run
+    `npm run devstart`
+- app is served on a simulator
+
+#### PawsForAMoment Features...
+
+#### Known bugs...
+
+_______
 
 ## Daily Workflow Logs
 ### 04/05/18:
@@ -40,4 +60,11 @@ Paws For A Moment is a mobile application that aggregates animal shelters across
 - Created NavBar.js
 - Added navbar to stack and implemented on all pages
 - Added Login and Home buttons to navbar with working functionality that takes you to login page and landing page respectively
-- Currently struggling with flex styling of navbar  
+- Currently struggling with flex styling of navbar
+
+### 04/13/2018
+- Figured out how to target Header for our navbar purposes
+- Created functioning buttons for Home and Login on the landing page, need to implement in other components
+- Deleted Navbar file and imports
+- Implemented header in all components
+- Working on auth check for header variability

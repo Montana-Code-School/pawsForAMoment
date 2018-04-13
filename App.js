@@ -32,10 +32,24 @@ const RootStack =
 )
 
 export default class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      isLogged: false,
+    }
+    this.userAuth = this.userAuth.bind(this);
+  }
+
+userAuth(isLogged) {
+  this.setState({
+    isLogged: isLogged
+  })
+}
+
   render() {
     return (
       <View style={styles.container}>
-        <RootStack />
+        <RootStack isLogged={this.state.isLogged}  userAuth={this.userAuth}/>
       </View>
     );
   }

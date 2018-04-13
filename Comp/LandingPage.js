@@ -14,14 +14,9 @@ export default class LandingPage extends React.Component {
       return {
         headerTitle: 'PawsForAMoment',
         headerRight: (
-          <View>
           <Button
             onPress = {() => navigation.navigate('Login')}
-            title = 'Login'/>
-          <Button
-            onPress = {() => navigation.navigate('LandingPage')}
-            title = 'Home'/>
-          </View>
+            title = 'Login'/>        
         ),
         headerStyle: {
           backgroundColor: "#42dcf4"
@@ -29,7 +24,6 @@ export default class LandingPage extends React.Component {
         headerTitleStyle: {
           fontWeight: 'bold',
         },
-
       }
     }
 

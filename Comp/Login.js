@@ -6,9 +6,26 @@ export default class Login extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      username: 'Enter Here',
-      password: 'Password',
+      username: '',
+      password: '',
       message: ''
+    }
+  }
+
+  static navigationOptions = ({ navigation }) => {
+    return {
+      headerTitle: 'PawsForAMoment',
+      headerRight: (
+        <Button
+          onPress = {() => navigation.navigate('LandingPage')}
+          title = 'Home'/>
+      ),
+      headerStyle: {
+        backgroundColor: "#42dcf4"
+      },
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
     }
   }
 
@@ -49,12 +66,14 @@ export default class Login extends React.Component {
         <TextInput
           onChangeText={(username) => this.setState({username: username})}
           value={this.state.username}
+          placeholder = 'Enter here'
           autoCapitalize = 'none'
         />
         <Text>Password: </Text>
         <TextInput
           onChangeText={(password) => this.setState({password: password})}
           value={this.state.password}
+          placeholder = 'Enter here'
           autoCapitalize = 'none'
         />
         <Text>{this.state.message}
