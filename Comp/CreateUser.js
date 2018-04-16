@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
-import { StackNavigator } from 'react-navigation';
 
 export default class CreateUser extends React.Component {
   constructor(props) {
@@ -10,28 +9,7 @@ export default class CreateUser extends React.Component {
       password: '',
       checkPassword: '',
       message: '',
-    }
-  }
-
-  static navigationOptions = ({ navigation }) => {
-    return {
-      headerTitle: 'PawsForAMoment',
-      headerRight: (
-        <View>
-        <Button
-          onPress = {() => navigation.navigate('Login')}
-          title = 'Login'/>
-        <Button
-          onPress = {() => navigation.navigate('LandingPage')}
-          title = 'Home'/>
-        </View>
-      ),
-      headerStyle: {
-        backgroundColor: "#42dcf4"
-      },
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
+      isLogged: false,
     }
   }
 
@@ -51,7 +29,7 @@ export default class CreateUser extends React.Component {
       })
       .then((res) => {
         if(res.status != 401) {
-          this.props.navigation.navigate('Login');
+          let sad = 'sad';
         } else {
           this.setState({message:"User already exists!"})
         }
