@@ -6,6 +6,7 @@ import Login from './Comp/Login.js';
 import MyPage from './Comp/MyPage.js';
 import CreateUser from './Comp/CreateUser.js';
 import NavBar from './Comp/NavBar.js';
+import Pets from './Comp/Pets.js';
 
 
 export default class App extends React.Component {
@@ -15,51 +16,68 @@ export default class App extends React.Component {
       display: 'LandingPage',
       isLogged: false,
       username: "",
+      data: [],
     }
-    this.changeDisplay = this.changeDisplay.bind(this);
-    this.userAuth = this.userAuth.bind(this);
-  }
-  changeDisplay(key, value){
-    let obj = {};
-    obj[key] = value;
-    this.setState(obj);
-  }
-  userAuth(status){
-    this.setState({isLogged: status});
+    this.changeState = this.changeState.bind(this);
   }
 
+  changeState(obj){
+    this.setState(obj);
+  }
+
+
+
   render() {
-    console.log(this.state.display);
-    if (this.state.display == 'LandingPage'){
-      return (
-        <View style={styles.container}>
-          <NavBar userAuth = {this.userAuth} changeDisplay = {this.changeDisplay} isLogged = {this.state.isLogged} />
-          <LandingPage changeDisplay = {this.changeDisplay} isLogged = {this.state.isLogged} />
-        </View>
-      );
-    }else if (this.state.display == 'Login'){
-      return (
-        <View style={styles.container}>
-          <NavBar changeDisplay = {this.changeDisplay} isLogged = {this.state.isLogged} />
-          <Login changeDisplay = {this.changeDisplay} userAuth = {this.userAuth} />
-        </View>
-      );
-    }else if (this.state.display == 'CreateUser'){
-      return (
-        <View style={styles.container}>
-          <CreateUser />
-        </View>
-      );
-    }else if (this.state.display == 'MyPage'){
-      return (
-        <View style={styles.container}>
-          <NavBar changeDisplay = {this.changeDisplay} isLogged = {this.state.isLogged} />
-          <MyPage />
-        </View>
-      );
+    switch(this.state.display) {
+      case 'LandingPage':
+        return (
+          <View style={styles.container}>
+            <NavBar changeState = {this.changeState} parentState = {this.state} />
+            <LandingPage changeState = {this.changeState} parentState = {this.state} />
+          </View>
+        );
+        break;
+      case 'Login':
+        return (
+          <View style={styles.container}>
+            <NavBar changeState = {this.changeState} parentState = {this.state} />
+            <Login changeState = {this.changeState} parentState = {this.state} />
+          </View>
+        );
+        break;
+      case 'CreateUser':
+        return (
+          <View style={styles.container}>
+            <CreateUser changeState = {this.changeState} parentState = {this.state} />
+          </View>
+        );
+        break;
+      case 'MyPage':
+        return (
+          <View style={styles.container}>
+            <NavBar changeState = {this.changeState} parentState = {this.state} />
+            <MyPage changeState = {this.changeState} parentState = {this.state} />
+          </View>
+        );
+        break;
+      case 'Pets':
+        return (
+          <View style={styles.container}>
+            <NavBar changeState = {this.changeState} parentState = {this.state} />
+            <Pets changeState = {this.changeState} parentState = {this.state} />
+          </View>
+        );
+        break;
+      default:
+        return (
+          <View style={styles.container}>
+            <NavBar changeState = {this.changeState} parentState = {this.state} />
+            <LandingPage changeState = {this.changeState} parentState = {this.state} />
+          </View>
+        );
+      }
     }
   }
-}
 
 const styles = StyleSheet.create({
   container: {

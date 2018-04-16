@@ -8,7 +8,6 @@ export default class Login extends React.Component {
       username: '',
       password: '',
       message: '',
-      isLogged: false,
     }
   }
 
@@ -26,8 +25,7 @@ export default class Login extends React.Component {
     })
     .then((res) => {
       if(res.status != 401) {
-        this.props.userAuth(true);
-        this.props.changeDisplay('MyPage');
+        this.props.changeState({isLogged: true, display: "MyPage", username: this.state.username});
       } else {
         this.setState({
           message: 'Incorrect user information!'
@@ -67,7 +65,7 @@ export default class Login extends React.Component {
         <Text>Don't have an account? Make one </Text>
         <Button
           title="here!"
-          onPress = {()=> console.log('sad')}
+          onPress = {()=> this.props.changeState({display: "CreateUser"})}
         />
       </View>
     )

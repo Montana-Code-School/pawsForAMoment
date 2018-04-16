@@ -7,9 +7,10 @@ const port = process.env.PORT || 5000;
 
 const app = express();
 const UserSchema = require('./models/UserSchema.js');
+const PetSchema = require('./models/PetSchema.js');
 const userAuthRouter = express.Router();
 const createUserRouter = express.Router();
-
+const petRouter = express.Router();
 
 mongoose.connect('mongodb://localhost/user-auth');
 
@@ -61,10 +62,37 @@ userAuthRouter.route('/')
     });
   });
 
+petRouter.route('/')
 
+  .post((req, res) => {
+    const petId = new PetSchema.pet();
+    petId.shelter = req.body.shelter;
+    petId.location = req.body.location;
+    petId.petname = req.body.petname;
+    petId.species = req.body.species;
+    petId.breed = req.body.breed;
+    petId.age = req.body.age;
+    petId.gender = req.body.gender;
+    petId.bio = req.body.bio;
+    petId.image = req.body.image;
+    petId.save(err => {
+      if(err)
+        res.send(err);
+      res.json({message: 'new pet stored!'})
+    })
+  })
+
+  .get((req, res) => {
+    PetSchema.pet.find((err, pet) => {
+      if(err)
+        res.send(err);
+      res.json(pet);
+    });
+  })
 
 app.use('/userAuth', userAuthRouter);
 app.use('/createUser', createUserRouter);
+app.use('/pets', petRouter);
 
 app.listen(port);
 console.log(`magic happens on port ${port}`);

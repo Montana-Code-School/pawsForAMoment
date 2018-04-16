@@ -5,7 +5,6 @@ export default class MyPage extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      isLogged: false,
     }
   }
 
@@ -13,7 +12,7 @@ export default class MyPage extends React.Component {
 
     return(
       <View>
-        <Text onPress={() => console.log(this.state.isLogged)}>Welcome back, person!</Text>
+        <Text>Welcome back, {this.props.parentState.username}!</Text>
       </View>
     )
   }

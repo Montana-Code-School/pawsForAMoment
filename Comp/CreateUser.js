@@ -9,7 +9,6 @@ export default class CreateUser extends React.Component {
       password: '',
       checkPassword: '',
       message: '',
-      isLogged: false,
     }
   }
 
@@ -29,7 +28,7 @@ export default class CreateUser extends React.Component {
       })
       .then((res) => {
         if(res.status != 401) {
-          let sad = 'sad';
+          this.props.changeState({display: 'MyPage', isLogged: true, username: this.state.username})
         } else {
           this.setState({message:"User already exists!"})
         }
