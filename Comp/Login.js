@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, TextInput, TouchableOpacity } from 'react-native';
-import { StackNavigator } from 'react-navigation';
 
 export default class Login extends React.Component {
   constructor(props) {
@@ -8,24 +7,8 @@ export default class Login extends React.Component {
     this.state = {
       username: '',
       password: '',
-      message: ''
-    }
-  }
-
-  static navigationOptions = ({ navigation }) => {
-    return {
-      headerTitle: 'PawsForAMoment',
-      headerRight: (
-        <Button
-          onPress = {() => navigation.navigate('LandingPage')}
-          title = 'Home'/>
-      ),
-      headerStyle: {
-        backgroundColor: "#42dcf4"
-      },
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
+      message: '',
+      isLogged: false,
     }
   }
 
@@ -43,9 +26,8 @@ export default class Login extends React.Component {
     })
     .then((res) => {
       if(res.status != 401) {
-        this.props.navigation.navigate('MyPage', {
-          username: this.state.username
-        })
+        this.props.userAuth(true);
+        this.props.changeDisplay('MyPage');
       } else {
         this.setState({
           message: 'Incorrect user information!'
@@ -85,7 +67,7 @@ export default class Login extends React.Component {
         <Text>Don't have an account? Make one </Text>
         <Button
           title="here!"
-          onPress = {()=>{this.props.navigation.navigate('CreateUser')}}
+          onPress = {()=> console.log('sad')}
         />
       </View>
     )
