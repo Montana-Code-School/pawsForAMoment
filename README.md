@@ -1,4 +1,4 @@
-# Paws For A Moment (arms of an angle)
+ # Paws For A Moment (arms of an angle)
 
 ## Paws For A Moment is a mobile application that aggregates animal shelters across the state of Montana.
 
@@ -68,3 +68,10 @@ _______
 - Deleted Navbar file and imports
 - Implemented header in all components
 - Working on auth check for header variability
+
+### 04/16/2018
+- Refactored code without react-navigation to handle state on a higher level
+- Added petSchema and pet routes to back-end
+- Added pets to our database
+- Created Pets page that gets data from database
+- Currently displaying names, but not images

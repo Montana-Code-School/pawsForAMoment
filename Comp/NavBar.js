@@ -10,27 +10,26 @@ export default class NavBar extends React.Component {
   }
 
   render() {
-    if(this.props.isLogged == false){
+    if(this.props.parentState.isLogged == false){
       return(
         <View >
-          <TouchableOpacity onPress = {() => this.props.changeDisplay('Login')}>
+          <TouchableOpacity onPress = {() => this.props.changeState({display: 'Login'})}>
             <Text style ={{color:'blue'}}>Login</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress = {() => this.props.changeDisplay('LandingPage')}>
+          <TouchableOpacity onPress = {() => this.props.changeState({display: 'LandingPage'})}>
             <Text style ={{color:'blue'}}>Home</Text>
           </TouchableOpacity>
         </View>
       )
-    }else if (this.props.isLogged == true){
+    } else if (this.props.parentState.isLogged == true){
       return(
         <View>
           <Button onPress = {() => {
-              this.props.userAuth(false);
-              this.props.changeDisplay('Login')
+              this.props.changeState({isLogged: false, display: 'Login'});
             }}
             title = 'Logout'
             />
-          <Button onPress = {() => this.props.changeDisplay('LandingPage')} title = 'Home' />
+          <Button onPress = {() => this.props.changeState({display: 'LandingPage'})} title = 'Home' />
         </View>
       )
     }
