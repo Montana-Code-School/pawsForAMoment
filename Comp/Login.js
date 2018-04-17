@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, TextInput, TouchableOpacity } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default class Login extends React.Component {
   constructor(props) {
@@ -11,7 +11,7 @@ export default class Login extends React.Component {
     }
   }
 
-  bark(e) {
+  login(e) {
     fetch('http://localhost:5000/userAuth', {
       method: 'POST',
       headers: {
@@ -25,7 +25,11 @@ export default class Login extends React.Component {
     })
     .then((res) => {
       if(res.status != 401) {
-        this.props.changeState({isLogged: true, display: "MyPage", username: this.state.username});
+        this.props.changeState({
+          isLogged: true,
+          display: 'MyPage',
+          username: this.state.username,
+        });
       } else {
         this.setState({
           message: 'Incorrect user information!'
@@ -46,26 +50,25 @@ export default class Login extends React.Component {
         <TextInput
           onChangeText={(username) => this.setState({username: username})}
           value={this.state.username}
-          placeholder = 'Enter here'
-          autoCapitalize = 'none'
+          placeholder='Enter here'
+          autoCapitalize='none'
         />
         <Text>Password: </Text>
         <TextInput
           onChangeText={(password) => this.setState({password: password})}
           value={this.state.password}
-          placeholder = 'Enter here'
-          autoCapitalize = 'none'
+          placeholder='Enter here'
+          autoCapitalize='none'
         />
-        <Text>{this.state.message}
-        </Text>
+        <Text>{this.state.message}</Text>
         <Button
-          title="Submit"
-          onPress={(e) => this.bark(e)}
+          onPress={(e) => this.login(e)}
+          title='Submit'
         />
         <Text>Don't have an account? Make one </Text>
         <Button
-          title="here!"
-          onPress = {()=> this.props.changeState({display: "CreateUser"})}
+          onPress={()=> this.props.changeState({display: 'CreateUser'})}
+          title='here!'
         />
       </View>
     )

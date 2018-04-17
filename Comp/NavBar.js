@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, TextInput, TouchableOpacity } from 'react-native';
+import { Button, StyleSheet, View} from 'react-native';
 
 export default class NavBar extends React.Component {
   constructor(props) {
@@ -12,35 +12,44 @@ export default class NavBar extends React.Component {
   render() {
     if(this.props.parentState.isLogged == false){
       return(
-        <View >
-          <TouchableOpacity onPress = {() => this.props.changeState({display: 'Login'})}>
-            <Text style ={{color:'blue'}}>Login</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress = {() => this.props.changeState({display: 'LandingPage'})}>
-            <Text style ={{color:'blue'}}>Home</Text>
-          </TouchableOpacity>
+        <View style={styles.navbar}>
+          <Button
+            onPress={() => this.props.changeState({display: 'Login'})}
+            title='Login'
+          />
+          <Button
+            onPress={() => this.props.changeState({display: 'LandingPage'})}
+            title='Home'
+          />
         </View>
       )
     } else if (this.props.parentState.isLogged == true){
       return(
-        <View>
-          <Button onPress = {() => {
-              this.props.changeState({isLogged: false, display: 'Login'});
-            }}
-            title = 'Logout'
-            />
-          <Button onPress = {() => this.props.changeState({display: 'LandingPage'})} title = 'Home' />
+        <View style={styles.navbar}>
+          <Button
+            onPress={() => this.props.changeState({isLogged: false, display: 'Login'})}
+            title='Logout'
+          />
+          <Button
+            onPress={() => this.props.changeState({display: 'LandingPage'})}
+            title='Home'
+          />
+          <Button
+            onPress={() => this.props.changeState({display: 'MyPage'})}
+            title='My Pets'
+          />
         </View>
       )
     }
   }
 }
-// const styles = StyleSheet.create({
-//   navBar: {
-//     flex: 1,
-//     flexDirection: 'row',
-//   },
-//   button: {
-//     paddingBottom: '1%'
-//   }
-// });
+
+const styles = StyleSheet.create({
+  navbar: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
+    height: 75,
+    backgroundColor: '#42dcf4',
+  },
+});

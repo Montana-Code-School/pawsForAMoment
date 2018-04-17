@@ -1,37 +1,53 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Image, TouchableOpacity } from 'react-native';
+import {  Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default class Pets extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       listOfPets: []
     }
   }
+
   componentDidMount() {
     let data = this.props.parentState.data;
-    console.log(this.props.parentState.data);
     let listOfPets = [];
     for(let i = 0; i < data.length; i++) {
-      console.log(typeof data[i].image)
       listOfPets.push((
-        <TouchableOpacity>
-          <View>
-            <Image src={data[i].image}/>
-            <Text>{data[i].petname}</Text>
-          </View>
+        <TouchableOpacity style={styles.petButton}>
+          <Image source={data[i].image} />
+          <Text style={styles.petButtonText}>{data[i].petname}</Text>
         </TouchableOpacity>
       ))
     }
-    this.setState({listOfPets: listOfPets})
+    this.setState({
+      listOfPets: listOfPets
+    })
   }
 
   render() {
     return(
       <View>
         {this.state.listOfPets}
-        <Text style={{color:'pink'}}onPress={() => console.log(this.state.listOfPets)}>Debug</Text>
+        <Text
+          onPress={() => console.log(this.state.listOfPets)}>
+        </Text>
       </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  petButton: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 100,
+    backgroundColor: '#edeeef',
+    marginBottom: 10,
+  },
+  petButtonText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  }
+});
