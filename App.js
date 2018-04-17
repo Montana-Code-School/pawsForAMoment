@@ -18,132 +18,83 @@ export default class App extends React.Component {
       isLogged: false,
       username: '',
       data: [],
-      montserrat: '',
     }
     this.changeState = this.changeState.bind(this);
+    this.stackNavigator = this.stackNavigator.bind(this);
   }
 
   changeState(obj){
     this.setState(obj);
   }
 
-  render() {
+  stackNavigator() {
     switch(this.state.display) {
       case 'LandingPage':
-        return (
-          <View style={styles.container}>
-            <NavBar
-              changeState={this.changeState}
-              parentState={this.state}
-            />
-            <Image
-              source={pawsLogo}
-              style={styles.image}
-            />
-            <LandingPage
-              changeState={this.changeState}
-              parentState={this.state}
-            />
-          </View>
-        );
+      return(
+        <LandingPage
+          changeState={this.changeState}
+          parentState={this.state}
+        />
+      )
         break;
       case 'Login':
-        return (
-          <View style={styles.container}>
-            <NavBar
-              changeState={this.changeState}
-              parentState={this.state}
-            />
-            <Image
-              source={pawsLogo}
-              style={styles.image}
-            />
-            <Login
-              changeState={this.changeState}
-              parentState={this.state}
-            />
-          </View>
-        );
+      return(
+        <Login
+          changeState={this.changeState}
+          parentState={this.state}
+        />
+      )
         break;
       case 'CreateUser':
-        return (
-          <View style={styles.container}>
-            <NavBar
-              changeState={this.changeState}
-              parentState={this.state}
-            />
-            <Image
-              source={pawsLogo}
-              style={styles.image}
-            />
-            <CreateUser
-              changeState={this.changeState}
-              parentState={this.state}
-            />
-          </View>
-        );
+      return(
+        <CreateUser
+          changeState={this.changeState}
+          parentState={this.state}
+        />
+      )
         break;
       case 'MyPage':
-        return (
-          <View style={styles.container}>
-            <NavBar
-              changeState={this.changeState}
-              parentState={this.state}
-            />
-            <Image
-              source={pawsLogo}
-              style={styles.image}
-            />
-            <MyPage
-              changeState={this.changeState}
-              parentState={this.state}
-            />
-          </View>
-        );
+      return(
+        <MyPage
+          changeState={this.changeState}
+          parentState={this.state}
+        />
+      )
         break;
       case 'Pets':
-        return (
-          <View style={styles.container}>
-            <NavBar
-              changeState={this.changeState}
-              parentState={this.state}
-            />
-            <Image
-              source={pawsLogo}
-              style={styles.image}
-            />
-            <Pets
-              changeState={this.changeState}
-              parentState={this.state}
-            />
-          </View>
-        );
+      return(
+        <Pets
+          changeState={this.changeState}
+          parentState={this.state}
+        />
+      )
         break;
-      case 'EnterPets':
-        return (
-          <View style={styles.container}>
-            <NavBar changeState = {this.changeState} parentState = {this.state} />
-            <EnterPets changeState = {this.changeState} parentState = {this.state} />
-          </View>
-        )
       default:
-        return (
-          <View style={styles.container}>
-            <NavBar
-              changeState={this.changeState}
-              parentState={this.state}
-            />
-            <Image
-              source={pawsLogo}
-              style={styles.image}
-            />
-            <LandingPage
-              changeState={this.changeState}
-              parentState={this.state}
-            />
-          </View>
-        );
+      return(
+        <LandingPage
+          changeState={this.changeState}
+          parentState={this.state}
+        />
+      )
+        break;
     }
+  }
+
+  render() {
+    console.log(this.stackNavigator() + "Hey I'm console logging!")
+    return (
+      <View style={styles.container}>
+         <NavBar
+           changeState={this.changeState}
+           parentState={this.state}
+         />
+         <Image
+           source={pawsLogo}
+           style={styles.image}
+         />
+        {this.stackNavigator()}
+      </View>
+    )
   }
 }
 
@@ -161,76 +112,3 @@ const styles = StyleSheet.create({
 });
 
 console.disableYellowBox = true;
-
-//   stackNavigator() {
-//     switch(this.state.display) {
-//       case 'LandingPage':
-//         <LandingPage
-//           changeState={this.changeState}
-//           parentState={this.state}
-//         />
-//         break;
-//       case 'Login':
-//         <Login
-//           changeState={this.changeState}
-//           parentState={this.state}
-//         />
-//         break;
-//       case 'CreateUser':
-//         <CreateUser
-//           changeState={this.changeState}
-//           parentState={this.state}
-//         />
-//         break;
-//       case 'MyPage':
-//         <MyPage
-//           changeState={this.changeState}
-//           parentState={this.state}
-//         />
-//         break;
-//       case 'Pets':
-//         <Pets
-//           changeState={this.changeState}
-//           parentState={this.state}
-//         />
-//         break;
-//       default:
-//         <LandingPage
-//           changeState={this.changeState}
-//           parentState={this.state}
-//         />
-//         break;
-//     }
-//   }
-//
-//   render() {
-//     return (
-//       <View style={styles.container}>
-//          <NavBar
-//            changeState={this.changeState}
-//            parentState={this.state}
-//          />
-//          <Image
-//            source={pawsLogo}
-//            style={styles.image}
-//          />
-//         {this.stackNavigator()}
-//       </View>
-//     )
-//   }
-// }
-//
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//   },
-//   image: {
-//     alignSelf: 'center',
-//     height: 65,
-//     width: 350,
-//     resizeMode: Image.resizeMode.contain,
-//   },
-// });
-//
-// console.disableYellowBox = true;
