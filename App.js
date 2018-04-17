@@ -7,6 +7,7 @@ import MyPage from './Comp/MyPage.js';
 import CreateUser from './Comp/CreateUser.js';
 import NavBar from './Comp/NavBar.js';
 import Pets from './Comp/Pets.js';
+import EnterPets from './Comp/EnterPets.js';
 
 
 export default class App extends React.Component {
@@ -68,6 +69,13 @@ export default class App extends React.Component {
           </View>
         );
         break;
+      case 'EnterPets':
+        return (
+          <View style={styles.container}>
+            <NavBar changeState = {this.changeState} parentState = {this.state} />
+            <EnterPets changeState = {this.changeState} parentState = {this.state} />
+          </View>
+        )
       default:
         return (
           <View style={styles.container}>

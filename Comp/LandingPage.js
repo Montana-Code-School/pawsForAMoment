@@ -22,7 +22,7 @@ export default class LandingPage extends React.Component {
       promise.then(() => {
         this.props.changeState({display: "Pets"});
       })
-    })  
+    })
   }
 
   render() {

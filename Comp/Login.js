@@ -67,6 +67,10 @@ export default class Login extends React.Component {
           title="here!"
           onPress = {()=> this.props.changeState({display: "CreateUser"})}
         />
+        <Button
+          title="Add Pet"
+          onPress = {()=> this.props.changeState({display: "EnterPets"})}
+        />
       </View>
     )
   }

@@ -5,19 +5,19 @@ export default class Pets extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      listOfPets: []
+      listOfPets: [],
+      firstImage: ""
     }
   }
+
   componentDidMount() {
     let data = this.props.parentState.data;
     console.log(this.props.parentState.data);
     let listOfPets = [];
     for(let i = 0; i < data.length; i++) {
-      console.log(typeof data[i].image)
       listOfPets.push((
         <TouchableOpacity>
           <View>
-            <Image src={data[i].image}/>
             <Text>{data[i].petname}</Text>
           </View>
         </TouchableOpacity>
@@ -27,10 +27,11 @@ export default class Pets extends React.Component {
   }
 
   render() {
+    console.log(this.state.firstImage)
     return(
       <View>
         {this.state.listOfPets}
-        <Text style={{color:'pink'}}onPress={() => console.log(this.state.listOfPets)}>Debug</Text>
+        <Text style={{color:'pink'}}>Show Meowzorz</Text>
       </View>
     )
   }
