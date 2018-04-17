@@ -75,3 +75,11 @@ _______
 - Added pets to our database
 - Created Pets page that gets data from database
 - Currently displaying names, but not images
+
+### 04/17/2018
+- Integrated changes from Eric and Kelsey
+  - Eric Branch - incorporated mLabs to host database, created EnterPets.js, and implemented from Login.js screen
+  - Kelsey Branch - refactored all pages, added myPets button to loggedIn navbar, added logo to all pages, added navbar and pets test files, and added styling on pets page and navbar 
+- Abstracted switch statement out of render function in App.js
+- Got pet images to render in Pets.js page
+- Started working on expanding pet info with onPress function
