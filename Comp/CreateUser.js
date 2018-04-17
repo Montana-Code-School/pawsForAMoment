@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default class CreateUser extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ export default class CreateUser extends React.Component {
     }
   }
 
-  meow(e) {
+  createUser(e) {
     e.preventDefault();
     if(this.state.password === this.state.checkPassword) {
       fetch('http://localhost:5000/createUser', {
@@ -23,14 +23,20 @@ export default class CreateUser extends React.Component {
         },
         body: JSON.stringify({
           username: this.state.username,
-          password: this.state.password
+          password: this.state.password,
         })
       })
       .then((res) => {
         if(res.status != 401) {
-          this.props.changeState({display: 'MyPage', isLogged: true, username: this.state.username})
+          this.props.changeState({
+            display: 'MyPage',
+            isLogged: true,
+            username: this.state.username,
+          })
         } else {
-          this.setState({message:"User already exists!"})
+          this.setState({
+            message: 'User already exists!'
+          })
         }
         return res;
       })
@@ -38,10 +44,9 @@ export default class CreateUser extends React.Component {
         console.log(err)
         return err;
       })
-      // this.props.navigation.navigate('Login');
     } else {
       this.setState({
-        message:"Password doesn't match!"
+        message: 'Password doesn\'t match!'
       })
     }
   }
@@ -49,35 +54,32 @@ export default class CreateUser extends React.Component {
   render() {
     return(
       <View>
-      <Text>Username: </Text>
-      <TextInput
-        onChangeText={(username) => this.setState({username: username})}
-        value={this.state.username}
-        autoCapitalize = 'none'
-        placeholder = 'Enter here'
-
-      />
-      <Text>Password: </Text>
-      <TextInput
-        onChangeText={(password) => this.setState({password: password})}
-        value={this.state.password}
-        autoCapitalize = 'none'
-        placeholder = 'Enter here'
-
-      />
-      <Text>Confirm Password: </Text>
-      <TextInput
-        onChangeText={(password) => this.setState({checkPassword: password})}
-        value={this.state.checkPassword}
-        autoCapitalize = 'none'
-        placeholder = 'Enter here'
-
-      />
-      <Button
-        title="Submit"
-        onPress={(e) => this.meow(e)}
-      />
-      <Text>{this.state.message}</Text>
+        <Text>Username: </Text>
+        <TextInput
+          onChangeText={(username) => this.setState({username: username})}
+          value={this.state.username}
+          autoCapitalize='none'
+          placeholder='Enter here'
+        />
+        <Text>Password: </Text>
+        <TextInput
+          onChangeText={(password) => this.setState({password: password})}
+          value={this.state.password}
+          autoCapitalize='none'
+          placeholder='Enter here'
+        />
+        <Text>Confirm Password: </Text>
+        <TextInput
+          onChangeText={(password) => this.setState({checkPassword: password})}
+          value={this.state.checkPassword}
+          autoCapitalize='none'
+          placeholder='Enter here'
+        />
+        <Button
+          onPress={(e) => this.createUser(e)}
+          title='Submit'
+        />
+        <Text>{this.state.message}</Text>
       </View>
     )
   }

@@ -18,6 +18,34 @@ mongoose.connection.openUri(db);
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
+//____________________________________________________CREATE_USER_MIDDLEWARE__
+
+createUserRouter.use((req, res, next) => {
+  console.log('something is happening');
+  return UserSchema.findOne({username: req.body.username}, (userErr, username) => {
+    if (userErr || username) {
+      return res.status(401).send('Something is broken!')
+    }
+    return next();
+  });
+});
+
+//_________________________________________________________CREATE_USER_ROUTE__
+
+createUserRouter.route('/')
+  .post((req, res) => {
+    const userId = new UserSchema();
+    userId.username = req.body.username;
+    userId.password = req.body.password;
+    userId.save(err => {
+      if(err)
+        res.send(err);
+      res.json({message: 'new secure user!'});
+    });
+  })
+
+//______________________________________________________USER_AUTH_MIDDLEWARE__
+
 userAuthRouter.use((req, res, next) => {
   console.log('something is happening');
   return UserSchema.findOne({
@@ -32,27 +60,7 @@ userAuthRouter.use((req, res, next) => {
   })
 });
 
-createUserRouter.use((req, res, next) => {
-    console.log('something is happening');
-    return UserSchema.findOne({username: req.body.username}, (userErr, username) => {
-      if (userErr || username) {
-        return res.status(401).send('Something broke!')
-      }
-      return next();
-    });
-  });
-
-createUserRouter.route('/')
-  .post((req, res) => {
-      const userId = new UserSchema();
-      userId.username = req.body.username;
-      userId.password = req.body.password;
-      userId.save(err => {
-        if(err)
-          res.send(err);
-        res.json({message: 'new secure user!'});
-      });
-  })
+//___________________________________________________________USER_AUTH_ROUTE__
 
 userAuthRouter.route('/')
   .post((req, res) => {
@@ -63,8 +71,9 @@ userAuthRouter.route('/')
     });
   });
 
-petRouter.route('/')
+//________________________________________________________________PETS_ROUTE__
 
+petRouter.route('/')
   .post((req, res) => {
     const petId = new PetSchema.pet();
     petId.shelter = req.body.shelter;
@@ -90,6 +99,8 @@ petRouter.route('/')
       res.json(pet);
     });
   })
+
+//____________________________________________________________________________
 
 app.use('/userAuth', userAuthRouter);
 app.use('/createUser', createUserRouter);

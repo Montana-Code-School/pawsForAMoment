@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, TextInput, TouchableOpacity } from 'react-native';
+import { Button, StyleSheet, Text, View, } from 'react-native';
 
 export default class LandingPage extends React.Component {
   constructor(props) {
@@ -20,7 +20,7 @@ export default class LandingPage extends React.Component {
         res();
       })
       promise.then(() => {
-        this.props.changeState({display: "Pets"});
+        this.props.changeState({display: 'Pets'});
       })
     })
   }
@@ -28,8 +28,10 @@ export default class LandingPage extends React.Component {
   render() {
     return(
       <View>
-        <Text>Find a Friend</Text>
-        <Button onPress={(e) => this.findPets(e)} title = 'Find pets!'/>
+        <Button
+          onPress={(e) => this.findPets(e)}
+          title='Find pets!'
+        />
       </View>
     )
   }
