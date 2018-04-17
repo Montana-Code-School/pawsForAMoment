@@ -14,7 +14,7 @@ ______
     `npm start`
   - on the back-end: cd into server and run
     `npm run devstart`
-- app is served on a simulator
+- app is served on a simulator or through expo on your device
 
 #### PawsForAMoment Features...
 
