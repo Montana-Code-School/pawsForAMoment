@@ -6,8 +6,13 @@ export default class Pets extends React.Component {
     super(props);
     this.state = {
       listOfPets: [],
-      firstImage: ""
+      firstImage: '',
     }
+  }
+
+  petInfo(e) {
+    petHeight = 500;
+    console.log('hey guys im ' + petHeight);
   }
 
   componentDidMount() {
@@ -15,7 +20,10 @@ export default class Pets extends React.Component {
     let listOfPets = [];
     for(let i = 0; i < data.length; i++) {
       listOfPets.push((
-        <TouchableOpacity style={styles.petButton}>
+        <TouchableOpacity
+          style={styles.petButton}
+          onPress={(e) => this.petInfo(e)}
+        >
           <Image
             source={{uri: data[i].image}}
             style={styles.petImage}
