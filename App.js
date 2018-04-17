@@ -7,8 +7,8 @@ import Login from './Comp/Login.js';
 import MyPage from './Comp/MyPage.js';
 import NavBar from './Comp/NavBar.js';
 import Pets from './Comp/Pets.js';
+import EnterPets from './Comp/EnterPets.js';
 import pawsLogo from './Images/pawsLogo.jpg';
-
 
 export default class App extends React.Component {
   constructor(props) {
@@ -119,6 +119,13 @@ export default class App extends React.Component {
           </View>
         );
         break;
+      case 'EnterPets':
+        return (
+          <View style={styles.container}>
+            <NavBar changeState = {this.changeState} parentState = {this.state} />
+            <EnterPets changeState = {this.changeState} parentState = {this.state} />
+          </View>
+        )
       default:
         return (
           <View style={styles.container}>

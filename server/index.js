@@ -12,7 +12,8 @@ const userAuthRouter = express.Router();
 const createUserRouter = express.Router();
 const petRouter = express.Router();
 
-mongoose.connect('mongodb://localhost/user-auth');
+const db = process.env.MONGODB_URI || 'mongodb://wtfm8bbq:L3q9f33p9@ds147589.mlab.com:47589/pawsareus'
+mongoose.connection.openUri(db);
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());

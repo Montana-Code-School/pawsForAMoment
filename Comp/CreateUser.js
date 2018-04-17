@@ -15,7 +15,7 @@ export default class CreateUser extends React.Component {
   createUser(e) {
     e.preventDefault();
     if(this.state.password === this.state.checkPassword) {
-      fetch('http://localhost:5000/createUser/', {
+      fetch('http://localhost:5000/createUser', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
