@@ -16,7 +16,10 @@ export default class Pets extends React.Component {
     for(let i = 0; i < data.length; i++) {
       listOfPets.push((
         <TouchableOpacity style={styles.petButton}>
-          <Image source={data[i].image} />
+          <Image
+            source={{uri: data[i].image}}
+            style={styles.petImage}
+          />
           <Text style={styles.petButtonText}>{data[i].petname}</Text>
         </TouchableOpacity>
       ))
@@ -42,7 +45,7 @@ export default class Pets extends React.Component {
 const styles = StyleSheet.create({
   petButton: {
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     alignItems: 'center',
     height: 100,
     backgroundColor: '#edeeef',
@@ -51,5 +54,9 @@ const styles = StyleSheet.create({
   petButtonText: {
     fontSize: 20,
     fontWeight: 'bold',
+  },
+  petImage: {
+    width: 80,
+    height: 80,
   }
 });
