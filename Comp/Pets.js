@@ -6,7 +6,6 @@ export default class Pets extends React.Component {
     super(props);
     this.state = {
       listOfPets: [],
-      firstImage: ""
     }
   }
 
@@ -30,7 +29,6 @@ export default class Pets extends React.Component {
   }
 
   render() {
-    console.log(this.state.firstImage)
     return(
       <View>
         {this.state.listOfPets}
