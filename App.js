@@ -37,6 +37,14 @@ export default class App extends React.Component {
         />
       )
         break;
+        case 'EnterPets':
+        return(
+          <EnterPets
+            changeState={this.changeState}
+            parentState={this.state}
+          />
+        )
+          break;
       case 'Login':
       return(
         <Login
