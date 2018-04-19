@@ -1,25 +1,31 @@
 import React from 'react';
-import {  Image, ScrollView, StyleSheet, Text, TouchableOpacity, Transform, View } from 'react-native';
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  Transform,
+  View
+} from 'react-native';
 
 export default class Pets extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      heightVal: 100,
-      heightStuff: []
+      heightVals: [],
+      showVals: []
     }
   }
 
-  onCLickTestyThing = (e) => {
-    console.log(this.state.heightStuff[0]);
-  }
-
-  UNSAFE_componentWillMount(){
-    let arr = [];
-    for(var i = 0; i < this.props.parentState.data.length; i++){
-      arr.push(100);
+  componentDidMount(){
+    let boxHeight = [];
+    let show = [];
+    for(var i = 0; i < this.props.parentState.data.length; i++) {
+      boxHeight.push(100);
+      show.push("none");
     }
-    this.setState({heightStuff: arr});
+    this.setState({ heightVals: boxHeight, showVals: show });
   }
 
   render() {
@@ -28,30 +34,62 @@ export default class Pets extends React.Component {
     for(let i = 0; i < data.length; i++) {
       listOfPets.push((
         <TouchableOpacity
-          style={[styles.petButton, {height: this.state.heightStuff[i]}]}
+          style={[styles.petButton, {height: this.state.heightVals[i]}]}
           key={i}
           onPress={() => {
-            let arr = this.state.heightStuff;
-            for (var j = 0; j < arr.length; j++) {
-             if (i == j){
-               arr[j] = 200;
-             }else{
-               arr[j] = 100;
+            let boxHeight = this.state.heightVals;
+            let show = this.state.showVals;
+            for (var j = 0; j < boxHeight.length; j++) {
+              if (boxHeight[j] == '100%'){
+                boxHeight[j] = 100;
+                show[j] = "none";
+              }else if (i == j) {
+               boxHeight[j] = '100%';
+               show[j] = "show";
+             } else {
+               boxHeight[j] = 100;
+               show[j] = "none";
              }
             }
             this.setState({
-              heightStuff:arr
+              heightVals:boxHeight,
+              showVals:show
             })
-            console.log(this.state.heightStuff);
           }}>
           <Image
             source={{uri: data[i].image}}
             style={styles.petImage}
           />
-          <Text
-            style={styles.petButtonText}>
-            {data[i].petname}
-          </Text>
+          <View style = {styles.petInfoText}>
+            <Text
+              style={styles.petButtonText}>
+              {data[i].petname}
+            </Text>
+            <View style={{
+              display:this.state.showVals[i],
+              paddingLeft: "10%",
+              paddingTop: "10%"
+              }}>
+              <Text>
+                Shelter: {data[i].shelter}
+              </Text>
+              <Text>
+                Location: {data[i].location}
+              </Text>
+              <Text>
+                Breed: {data[i].breed}
+              </Text>
+              <Text>
+                Age: {data[i].age}
+              </Text>
+              <Text>
+                Gender: {data[i].gender}
+              </Text>
+              <Text>
+                Bio: {data[i].bio}
+              </Text>
+            </View>
+          </View>
         </TouchableOpacity>
 
       ))
@@ -69,7 +107,6 @@ export default class Pets extends React.Component {
 const styles = StyleSheet.create({
   contentContainer: {
     paddingVertical: 20,
-    flex: 0,
   },
   petButton: {
     flex: 1,
@@ -78,18 +115,25 @@ const styles = StyleSheet.create({
     height: 100,
     backgroundColor: '#edeeef',
     marginBottom: 10,
-    alignItems: 'center',
-    // paddingBottom: 200,
+    paddingBottom: '10%',
+    flexWrap: 'wrap'
   },
   petButtonText: {
-    paddingLeft: '5%',
+    paddingLeft: '35%',
+    paddingTop: '14%',
     fontSize: 20,
     fontWeight: 'bold',
+    alignItems: 'center'
   },
   petImage: {
     marginLeft: 10,
+    marginTop: 10,
     width: 80,
     height: 80,
-    transform: [{scaleY: 1}],
+  },
+  petInfoText: {
+    flexDirection: 'column',
+    justifyContent:'flex-start',
+    width:250,
   }
 });
