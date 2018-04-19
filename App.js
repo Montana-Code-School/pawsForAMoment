@@ -98,7 +98,6 @@ export default class App extends React.Component {
   }
 
   render() {
-    console.log(this.stackNavigator() + "Hey I'm console logging!")
     return (
       <View style={styles.container}>
          <NavBar
@@ -126,6 +125,7 @@ const styles = StyleSheet.create({
     width: 350,
     resizeMode: Image.resizeMode.contain,
   },
+  
 });
 
 console.disableYellowBox = true;
