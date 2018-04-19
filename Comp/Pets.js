@@ -1,15 +1,16 @@
 import React from 'react';
-import {  Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {  Image, StyleSheet, Text, TouchableOpacity, View, ScrollView } from 'react-native';
 
 export default class Pets extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       listOfPets: [],
+      firstImage: ""
     }
   }
 
-  componentDidMount() {
+  display() {
     let data = this.props.parentState.data;
     let listOfPets = [];
     for(let i = 0; i < data.length; i++) {
@@ -30,30 +31,37 @@ export default class Pets extends React.Component {
 
   render() {
     return(
+      <ScrollView style={styles.contentContainer}>
       <View>
         {this.state.listOfPets}
         <Text
           onPress={() => console.log(this.state.listOfPets)}>
         </Text>
       </View>
+      </ScrollView>
     )
   }
 }
 
 const styles = StyleSheet.create({
+  contentContainer: {
+    paddingVertical: 20,
+  },
   petButton: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     height: 100,
     backgroundColor: '#edeeef',
     marginBottom: 10,
   },
   petButtonText: {
+    paddingLeft: '5%',
     fontSize: 20,
     fontWeight: 'bold',
   },
   petImage: {
+    marginLeft: 10,
     width: 80,
     height: 80,
   }
