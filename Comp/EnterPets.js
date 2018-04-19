@@ -136,5 +136,4 @@ export default class EnterPets extends React.Component {
         justifyContent: 'center',
         alignItems: 'flex-start'
       },
-
     });

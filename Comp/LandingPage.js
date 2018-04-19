@@ -27,7 +27,7 @@ export default class LandingPage extends React.Component {
 
   render() {
     return(
-      <View>
+      <View style = {styles.container}>
         <Button
           onPress={(e) => this.findPets(e)}
           title='Find pets!'
@@ -36,3 +36,13 @@ export default class LandingPage extends React.Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+});

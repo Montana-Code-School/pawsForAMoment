@@ -9,6 +9,7 @@ import NavBar from './Comp/NavBar.js';
 import Pets from './Comp/Pets.js';
 import EnterPets from './Comp/EnterPets.js';
 import pawsLogo from './Images/pawsLogo.jpg';
+import Test from './Comp/Test.js';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -77,6 +78,14 @@ export default class App extends React.Component {
         />
       )
         break;
+        case 'Test':
+        return(
+          <Test
+            changeState={this.changeState}
+            parentState={this.state}
+          />
+        )
+          break;
       default:
       return(
         <LandingPage
