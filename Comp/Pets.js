@@ -6,12 +6,20 @@ export default class Pets extends React.Component {
     super(props);
     this.state = {
       heightVal: 100,
+      heightStuff: []
     }
   }
 
   onCLickTestyThing = (e) => {
-    console.log(this.props.parentState.data[0]);
-    this.setState({heightVal: 200});
+    console.log(this.state.heightStuff[0]);
+  }
+
+  UNSAFE_componentWillMount(){
+    let arr = [];
+    for(var i = 0; i < this.props.parentState.data.length; i++){
+      arr.push(100);
+    }
+    this.setState({heightStuff: arr});
   }
 
   render() {
@@ -20,9 +28,22 @@ export default class Pets extends React.Component {
     for(let i = 0; i < data.length; i++) {
       listOfPets.push((
         <TouchableOpacity
-          style={[styles.petButton, {height:this.state.heightVal}]}
+          style={[styles.petButton, {height: this.state.heightStuff[i]}]}
           key={i}
-          onPress={this.onCLickTestyThing}>
+          onPress={() => {
+            let arr = this.state.heightStuff;
+            for (var j = 0; j < arr.length; j++) {
+             if (i == j){
+               arr[j] = 200;
+             }else{
+               arr[j] = 100;
+             }
+            }
+            this.setState({
+              heightStuff:arr
+            })
+            console.log(this.state.heightStuff);
+          }}>
           <Image
             source={{uri: data[i].image}}
             style={styles.petImage}
@@ -32,6 +53,7 @@ export default class Pets extends React.Component {
             {data[i].petname}
           </Text>
         </TouchableOpacity>
+
       ))
     }
     return(
