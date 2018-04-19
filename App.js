@@ -9,6 +9,7 @@ import NavBar from './Comp/NavBar.js';
 import Pets from './Comp/Pets.js';
 import EnterPets from './Comp/EnterPets.js';
 import pawsLogo from './Images/pawsLogo.jpg';
+import mountains from './Images/mountains.jpg';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -81,7 +82,6 @@ export default class App extends React.Component {
   }
 
   render() {
-    console.log(this.stackNavigator() + "Hey I'm console logging!")
     return (
       <View style={styles.container}>
          <NavBar
@@ -93,6 +93,10 @@ export default class App extends React.Component {
            style={styles.image}
          />
         {this.stackNavigator()}
+        <Image
+          source={mountains}
+          style={styles.imageMtns}
+        />
       </View>
     )
   }
@@ -101,12 +105,17 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#c0f2dc',
   },
   image: {
     alignSelf: 'center',
     height: 65,
     width: 350,
+    resizeMode: Image.resizeMode.contain,
+  },
+  imageMtns: {
+    width: 380,
+    alignSelf: 'flex-start',
     resizeMode: Image.resizeMode.contain,
   },
 });
