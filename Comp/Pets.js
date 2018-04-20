@@ -3,10 +3,11 @@ import {
   Image,
   ScrollView,
   StyleSheet,
+  Switch,
   Text,
   TouchableOpacity,
   Transform,
-  View
+  View,
 } from 'react-native';
 
 export default class Pets extends React.Component {
@@ -14,7 +15,9 @@ export default class Pets extends React.Component {
     super(props);
     this.state = {
       heightVals: [],
-      showVals: []
+      showVals: [],
+      checkBox: false,
+      displayCheckBox: 'none',
     }
   }
 
@@ -26,6 +29,24 @@ export default class Pets extends React.Component {
       show.push("none");
     }
     this.setState({ heightVals: boxHeight, showVals: show });
+    if(this.props.parentState.isLogged == true) {
+      this.setState({
+        displayCheckBox: 'flex'
+      })
+    } else {
+      this.setState({
+        displayCheckBox: 'none'
+      })
+    }
+  }
+  savePets (e) {
+    if(this.state.checkBox == true){
+      this.setState({checkBox:false});
+    }else{
+      this.setState({checkBox:true});
+    }
+    console.log(this.state.checkBox);
+    fetch('http://localhost:5000/')
   }
 
   render() {
@@ -45,7 +66,7 @@ export default class Pets extends React.Component {
                 show[j] = "none";
               }else if (i == j) {
                boxHeight[j] = '100%';
-               show[j] = "show";
+               show[j] = "flex";
              } else {
                boxHeight[j] = 100;
                show[j] = "none";
@@ -88,6 +109,13 @@ export default class Pets extends React.Component {
               <Text>
                 Bio: {data[i].bio}
               </Text>
+              <View style={{flexDirection: 'row', display: this.state.displayCheckBox}}>
+                <Text>Save to My Pets?</Text>
+                <Switch
+                value={this.state.checkBox}
+                onValueChange={(e) => this.savePets(e)}
+              />
+              </View>
             </View>
           </View>
         </TouchableOpacity>

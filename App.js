@@ -16,7 +16,7 @@ export default class App extends React.Component {
     super(props)
     this.state = {
       display: 'LandingPage',
-      isLogged: false,
+      isLogged: true,//change to false for production, only true for testing porpoises
       username: '',
       data: [],
     }
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     width: 350,
     resizeMode: Image.resizeMode.contain,
   },
-  
+
 });
 
 console.disableYellowBox = true;

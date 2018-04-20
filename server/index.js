@@ -11,6 +11,7 @@ const PetSchema = require('./models/PetSchema.js');
 const userAuthRouter = express.Router();
 const createUserRouter = express.Router();
 const petRouter = express.Router();
+const savePetsRouter = express.Router();
 
 const db = process.env.MONGODB_URI || 'mongodb://wtfm8bbq:L3q9f33p9@ds147589.mlab.com:47589/pawsareus'
 mongoose.connection.openUri(db);
@@ -99,12 +100,39 @@ petRouter.route('/')
       res.json(pet);
     });
   })
+  //________________________________________________________________SavePETS_ROUTE__
+savePetsRouter.route('/')
+  .post((req, res) => {
+    PetSchema.pet.findById(req.body._id, (err, pet) => {
+      if(err)
+        res.send(err);
+      UserSchema.findOne({username: req.body.username}, (err, user) => {
+        user.pets.push(pet);
+        user.save();
+        res.send(user);
+      })
+    })
+  })
+
+  .put((req, res) => {
+    UserSchema.findOne({username: req.body.username}.populate({
+      path: 'pets'
+    }).exec((err, user) => {
+      if(err)
+        res.send(err);
+      res.json(user);
+    })
+  )
+})
+  // i think we need a .save()
+  //
 
 //____________________________________________________________________________
 
 app.use('/userAuth', userAuthRouter);
 app.use('/createUser', createUserRouter);
 app.use('/pets', petRouter);
+app.use('/savePets', savePetsRouter);
 
 app.listen(port);
 console.log(`magic happens on port ${port}`);

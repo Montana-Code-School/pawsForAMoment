@@ -57,21 +57,21 @@ export default class CreateUser extends React.Component {
         <Text>Username: </Text>
         <TextInput
           onChangeText={(username) => this.setState({username: username})}
-          value={this.state.username}
+          value={this.state.username.split(" ").join("")}
           autoCapitalize='none'
           placeholder='Enter here'
         />
         <Text>Password: </Text>
         <TextInput
           onChangeText={(password) => this.setState({password: password})}
-          value={this.state.password}
+          value={this.state.password.split(" ").join("")}
           autoCapitalize='none'
           placeholder='Enter here'
         />
         <Text>Confirm Password: </Text>
         <TextInput
           onChangeText={(password) => this.setState({checkPassword: password})}
-          value={this.state.checkPassword}
+          value={this.state.checkPassword.split(" ").join("")}
           autoCapitalize='none'
           placeholder='Enter here'
         />
