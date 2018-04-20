@@ -9,4 +9,8 @@ const UserSchema = new Schema({
   }]
 });
 
-module.exports = mongoose.model('user', UserSchema);
+let userId = mongoose.model('userId', UserSchema);
+module.exports = {
+  userId: userId,
+  UserSchema: UserSchema
+};

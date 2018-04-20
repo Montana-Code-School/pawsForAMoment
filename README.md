@@ -91,3 +91,9 @@ _______
 - Pet information now show/hides depending on which pet is selected for display.
 - Rounded out the pet information for "Odysseus" with an image.
 - Erin's computer is happier. it is not making sounds or heating up strangely.
+
+### 04/20/2018
+- Created 'save to my pets' slider in pets page
+  - only renders when logged in
+- Created routes to save pet info to user and to display pets on MyPets page
+  - having issues with display pets route 

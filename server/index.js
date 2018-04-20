@@ -12,6 +12,7 @@ const userAuthRouter = express.Router();
 const createUserRouter = express.Router();
 const petRouter = express.Router();
 const savePetsRouter = express.Router();
+const displayPetsRouter = express.Router();
 
 const db = process.env.MONGODB_URI || 'mongodb://wtfm8bbq:L3q9f33p9@ds147589.mlab.com:47589/pawsareus'
 mongoose.connection.openUri(db);
@@ -100,7 +101,9 @@ petRouter.route('/')
       res.json(pet);
     });
   })
-  //________________________________________________________________SavePETS_ROUTE__
+
+//___________________________________________________________SAVE_PETS_ROUTE__
+
 savePetsRouter.route('/')
   .post((req, res) => {
     PetSchema.pet.findById(req.body._id, (err, pet) => {
@@ -114,18 +117,27 @@ savePetsRouter.route('/')
     })
   })
 
-  .put((req, res) => {
-    UserSchema.findOne({username: req.body.username}.populate({
-      path: 'pets'
-    }).exec((err, user) => {
+//________________________________________________________DISPLAY_PETS_ROUTE__
+
+displayPetsRouter.route('/:username')
+  .get((req, res) => {
+    console.log(req.params.username);
+    // UserSchema.userId.findOne({username: req.params.username}).populate({
+    //   path: 'pets'
+    // }).exec((err, user) => {
+    //   console.log(user);
+    //   if(err)
+    //     res.send(err);
+    //   res.json(user);
+    // })
+    UserSchema.userId.findOne({'username': req.params.username}, (err, user) => {
+      console.log(user);
       if(err)
         res.send(err);
       res.json(user);
     })
-  )
-})
-  // i think we need a .save()
-  //
+  })
+
 
 //____________________________________________________________________________
 
@@ -133,6 +145,7 @@ app.use('/userAuth', userAuthRouter);
 app.use('/createUser', createUserRouter);
 app.use('/pets', petRouter);
 app.use('/savePets', savePetsRouter);
+app.use('/displayPets', displayPetsRouter);
 
 app.listen(port);
 console.log(`magic happens on port ${port}`);
