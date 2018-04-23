@@ -35,7 +35,7 @@ export default class NavBar extends React.Component {
             title='Home'
           />
           <Button
-            onPress={() => this.props.changeState({display: 'MyPage'})}
+            onPress={() => this.props.changeState({display: 'MyPets'})}
             title='My Pets'
           />
         </View>

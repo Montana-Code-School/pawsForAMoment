@@ -18,14 +18,12 @@ componentDidMount() {
     .then((res) => {
       return res.json();
     })
-
     .then((pets) => {
       this.setState({
         myPets: pets.pets
       })
       res();
     })
-
     .catch((err) => {
       console.log(err)
       rej();
@@ -151,3 +149,4 @@ const styles = StyleSheet.create({
     width:250,
   }
 });
+

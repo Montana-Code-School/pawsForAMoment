@@ -2,21 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Image, StyleSheet, View, YellowBox } from 'react-native';
 import CreateUser from './Comp/CreateUser.js';
+import EnterPets from './Comp/EnterPets.js';
 import LandingPage from './Comp/LandingPage.js';
 import Login from './Comp/Login.js';
 import MyPets from './Comp/MyPets.js';
 import NavBar from './Comp/NavBar.js';
 import Pets from './Comp/Pets.js';
-import EnterPets from './Comp/EnterPets.js';
-import pawsLogo from './Images/pawsLogo.jpg';
 import Test from './Comp/Test.js';
+import pawsLogo from './Images/pawsLogo.jpg';
+
 
 export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       display: 'LandingPage',
-      isLogged: true,//change to false for production, only true for testing porpoises
+      isLogged: true,
+      // ^^ change to false for production, only true for testing porpoises
       username: '',
       data: [],
     }
@@ -38,14 +40,14 @@ export default class App extends React.Component {
         />
       )
         break;
-        case 'EnterPets':
-        return(
-          <EnterPets
-            changeState={this.changeState}
-            parentState={this.state}
-          />
-        )
-          break;
+      case 'EnterPets':
+      return(
+        <EnterPets
+          changeState={this.changeState}
+          parentState={this.state}
+        />
+      )
+        break;
       case 'Login':
       return(
         <Login
@@ -78,14 +80,14 @@ export default class App extends React.Component {
         />
       )
         break;
-        case 'Test':
-        return(
-          <Test
-            changeState={this.changeState}
-            parentState={this.state}
-          />
-        )
-          break;
+      case 'Test':
+      return(
+        <Test
+          changeState={this.changeState}
+          parentState={this.state}
+        />
+      )
+        break;
       default:
       return(
         <LandingPage

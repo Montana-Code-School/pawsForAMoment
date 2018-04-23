@@ -1,6 +1,6 @@
- # Paws For A Moment (arms of an angle)
+ # PawsForAMoment
 
-## Paws For A Moment is a mobile application that aggregates animal shelters across the state of Montana.
+## PawsForAMoment is a mobile application that aggregates animal shelters across the state of Montana.
 
 ______
 
@@ -96,4 +96,4 @@ _______
 - Created 'save to my pets' slider in pets page
   - only renders when logged in
 - Created routes to save pet info to user and to display pets on MyPets page
-  - having issues with display pets route 
+  - having issues with display pets route
