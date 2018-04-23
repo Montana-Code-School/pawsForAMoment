@@ -46,17 +46,17 @@ export default class Login extends React.Component {
   render() {
     return(
       <View>
-        <Text>Username:</Text>
+        <Text>Username: </Text>
         <TextInput
           onChangeText={(username) => this.setState({username: username})}
-          value={this.state.username}
+          value={this.state.username.split(" ").join("")}
           placeholder='Enter here'
           autoCapitalize='none'
         />
         <Text>Password: </Text>
         <TextInput
           onChangeText={(password) => this.setState({password: password})}
-          value={this.state.password}
+          value={this.state.password.split(" ").join("")}
           placeholder='Enter here'
           autoCapitalize='none'
         />
@@ -71,12 +71,12 @@ export default class Login extends React.Component {
           title='here!'
         />
         <Button
-          title="Add Pet"
-          onPress = {()=> this.props.changeState({display: "EnterPets"})}
+          title='Add Pet'
+          onPress = {()=> this.props.changeState({display: 'EnterPets'})}
         />
         <Button
-          title="Test Page"
-          onPress = {()=> this.props.changeState({display: "Test"})}
+          title='Test Page'
+          onPress = {()=> this.props.changeState({display: 'Test'})}
         />
       </View>
     )

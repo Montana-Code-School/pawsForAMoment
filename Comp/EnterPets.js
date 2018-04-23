@@ -5,16 +5,16 @@ export default class EnterPets extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      shelter: "",
-      location: "",
-      petname: "",
-      species: "",
-      breed: "",
-      age:  "",
-      gender: "",
-      bio: "",
-      image: "",
-      message: ""
+      shelter: '',
+      location: '',
+      petname: '',
+      species: '',
+      breed: '',
+      age:  '',
+      gender: '',
+      bio: '',
+      image: '',
+      message: ''
     }
   }
 
@@ -39,7 +39,7 @@ export default class EnterPets extends React.Component {
         })
       },
       this.setState({
-        message: "Pet Added!"
+        message: 'Pet Added!'
       }))
     }
 
@@ -52,7 +52,6 @@ export default class EnterPets extends React.Component {
             value={this.state.shelter}
             autoCapitalize = 'none'
             placeholder = 'Enter here'
-
           />
           <Text>Location: </Text>
           <TextInput
@@ -60,15 +59,13 @@ export default class EnterPets extends React.Component {
             value={this.state.location}
             autoCapitalize = 'none'
             placeholder = 'Enter here'
-
           />
-          <Text>Pets Name: </Text>
+          <Text>Pet Name: </Text>
           <TextInput
             onChangeText={(petname) => this.setState({petname: petname})}
             value={this.state.petname}
             autoCapitalize = 'none'
             placeholder = 'Enter here'
-
           />
           <Text>Species: </Text>
           <TextInput
@@ -76,7 +73,6 @@ export default class EnterPets extends React.Component {
             value={this.state.species}
             autoCapitalize = 'none'
             placeholder = 'Enter here'
-
           />
           <Text>Breed: </Text>
           <TextInput
@@ -84,7 +80,6 @@ export default class EnterPets extends React.Component {
             value={this.state.breed}
             autoCapitalize = 'none'
             placeholder = 'Enter here'
-
           />
           <Text>Age: </Text>
           <TextInput
@@ -92,7 +87,6 @@ export default class EnterPets extends React.Component {
             value={this.state.age}
             autoCapitalize = 'none'
             placeholder = 'Enter here'
-
           />
           <Text>Gender: </Text>
           <TextInput
@@ -100,7 +94,6 @@ export default class EnterPets extends React.Component {
             value={this.state.gender}
             autoCapitalize = 'none'
             placeholder = 'Enter here'
-
           />
           <Text>Bio: </Text>
           <TextInput
@@ -108,7 +101,6 @@ export default class EnterPets extends React.Component {
             value={this.state.bio}
             autoCapitalize = 'none'
             placeholder = 'Enter here'
-
           />
           <Text>Image: </Text>
           <TextInput
@@ -116,7 +108,6 @@ export default class EnterPets extends React.Component {
             value={this.state.image}
             autoCapitalize = 'none'
             placeholder = 'Enter here'
-
           />
           <Button
             title="Submit"

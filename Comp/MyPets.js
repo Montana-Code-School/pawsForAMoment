@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default class MyPage extends React.Component {
+export default class MyPets extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
