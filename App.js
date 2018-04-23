@@ -4,7 +4,7 @@ import { Image, StyleSheet, View, YellowBox } from 'react-native';
 import CreateUser from './Comp/CreateUser.js';
 import LandingPage from './Comp/LandingPage.js';
 import Login from './Comp/Login.js';
-import MyPage from './Comp/MyPage.js';
+import MyPets from './Comp/MyPets.js';
 import NavBar from './Comp/NavBar.js';
 import Pets from './Comp/Pets.js';
 import EnterPets from './Comp/EnterPets.js';
@@ -62,9 +62,9 @@ export default class App extends React.Component {
         />
       )
         break;
-      case 'MyPage':
+      case 'MyPets':
       return(
-        <MyPage
+        <MyPets
           changeState={this.changeState}
           parentState={this.state}
         />
