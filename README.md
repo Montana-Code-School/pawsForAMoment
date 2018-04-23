@@ -97,3 +97,16 @@ _______
   - only renders when logged in
 - Created routes to save pet info to user and to display pets on MyPets page
   - having issues with display pets route
+
+### 04/22/2018
+- Added trim to login pages.
+- Fixed bug on MyPets page so that slider function doesn't change all pets.
+- Backend route for MyPets works correctly.
+- Minor styling to pets page.
+
+### 04/23/2018
+- Slider now correctly adds and removes pets from MyPets.
+- Slider now correctly shows if pet has been added to MyPets.
+- Inserted button into MyPets to remove pets from that location.
+- Added pictures to LandingPage.
+- Changed login initial login route to LandingPage.

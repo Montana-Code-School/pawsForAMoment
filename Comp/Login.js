@@ -49,14 +49,14 @@ export default class Login extends React.Component {
         <Text>Username: </Text>
         <TextInput
           onChangeText={(username) => this.setState({username: username})}
-          value={this.state.username.split(" ").join("")}
+          value={this.state.username.split(" ").join("").trim()}
           placeholder='Enter here'
           autoCapitalize='none'
         />
         <Text>Password: </Text>
         <TextInput
           onChangeText={(password) => this.setState({password: password})}
-          value={this.state.password.split(" ").join("")}
+          value={this.state.password.split(" ").join("").trim()}
           placeholder='Enter here'
           autoCapitalize='none'
         />

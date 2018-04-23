@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Image} from 'react-native';
+import { Button, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default class MyPage extends React.Component {
   constructor(props) {
@@ -7,20 +7,45 @@ export default class MyPage extends React.Component {
     this.state = {
       myPets: "",
       heightVals: [],
-      showVals: []
+      showVals: [],
+      petId: "",
     }
   }
 
+removeMyPets() {
+  setTimeout(() => {
+    fetch('http://localhost:5000/savePets', {
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: this.props.parentState.username,
+        _id: this.state.petId,
+      })
+    })
+    .then((res) => {
+      this.componentDidMount();
+      return res.json();
+    })
+    .catch((err) => {
+      return err;
+    })
+  }, 100)
+}
+
+
+
 componentDidMount() {
   let promise = new Promise((res, rej) => {
-
   fetch('http://localhost:5000/displayPets/' + this.props.parentState.username)
     .then((res) => {
       return res.json();
     })
     .then((pets) => {
       this.setState({
-        myPets: pets.pets
+        myPets: pets
       })
       res();
     })
@@ -29,7 +54,6 @@ componentDidMount() {
       rej();
     })
   })
-
   promise.then(() => {
     let boxHeight = [];
     let show = [];
@@ -68,7 +92,6 @@ componentDidMount() {
               heightVals:boxHeight,
               showVals:show
             })
-            console.log(this.state.showVals);
           }}>
           <Image
             source={{uri: data[i].image}}
@@ -102,6 +125,13 @@ componentDidMount() {
               <Text>
                 Bio: {data[i].bio}
               </Text>
+              <Button
+              onPress = {(e) => {
+                  this.setState({petId: data[i]._id})
+                  this.removeMyPets(e)
+                }}
+              title = "Remove from MyPets"
+              />
             </View>
           </View>
         </TouchableOpacity>
@@ -149,4 +179,3 @@ const styles = StyleSheet.create({
     width:250,
   }
 });
-

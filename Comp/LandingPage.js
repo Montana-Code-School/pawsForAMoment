@@ -9,19 +9,35 @@ export default class LandingPage extends React.Component {
     }
   }
 
+  componentDidMount() {
+    if(this.props.parentState.isLogged == true) {
+      fetch('http://localhost:5000/displayPets/' + this.props.parentState.username)
+      .then((res) => {
+        return res.json();
+      })
+      .then((pets) => {
+        this.props.changeState({
+          userData: pets,
+        })
+      })
+    }
+  }
+
   findPets(e) {
-    fetch('http://localhost:5000/pets')
-    .then((res) => {
-     return res.json();
-    })
-    .then((data) => {
-      let promise = new Promise((res, rej) => {
-        this.props.changeState({data: data});
+    let promise = new Promise((res, rej) => {
+      fetch('http://localhost:5000/pets')
+      .then((res) => {
+       return res.json();
+      })
+      .then((data) => {
+        this.props.changeState({
+          data: data
+        });
         res();
       })
-      promise.then(() => {
-        this.props.changeState({display: 'Pets'});
-      })
+    })
+    promise.then(() => {
+      this.props.changeState({display: 'Pets'});
     })
   }
 

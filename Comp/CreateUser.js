@@ -22,8 +22,8 @@ export default class CreateUser extends React.Component {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          username: this.state.username,
-          password: this.state.password,
+          username: this.state.username.split(' ').join(''),
+          password: this.state.password.split(' ').join(''),
         })
       })
       .then((res) => {

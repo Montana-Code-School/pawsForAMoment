@@ -18,9 +18,10 @@ export default class App extends React.Component {
     this.state = {
       display: 'LandingPage',
       isLogged: true,
+      username: 'Luna',
       // ^^ change to false for production, only true for testing porpoises
-      username: '',
       data: [],
+      userData: [],
     }
     this.changeState = this.changeState.bind(this);
     this.stackNavigator = this.stackNavigator.bind(this);

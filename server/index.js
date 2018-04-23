@@ -36,7 +36,7 @@ createUserRouter.use((req, res, next) => {
 
 createUserRouter.route('/')
   .post((req, res) => {
-    const userId = new UserSchema();
+    const userId = new UserSchema.user();
     userId.username = req.body.username;
     userId.password = req.body.password;
     userId.save(err => {
@@ -109,24 +109,43 @@ savePetsRouter.route('/')
       if(err)
         res.send(err);
       UserSchema.user.findOne({username: req.body.username}, (err, user) => {
-        user.pets.push(pet);
-        user.save();
+        let check = false;
+        for(let i = 0; i < user.pets.length; i++) {
+          if(req.body._id == user.pets[i]) {
+            check = true;
+          }
+        }
+        if(check == false) {
+          user.pets.push(pet);
+          user.save();
+        }
         res.send(user);
       })
     })
   })
 
+  .delete((req, res) => {
+    UserSchema.user.findOne({username: req.body.username}, (err, user) => {
+      for(let i = 0; i < user.pets.length; i++) {
+        if(req.body._id == user.pets[i]) {
+          console.log("working bloop");
+          user.pets.splice(i, 1)
+          user.save();
+        }
+      }
+      res.send(user);
+    })
+  })
 //________________________________________________________DISPLAY_PETS_ROUTE__
 
 displayPetsRouter.route('/:username')
   .get((req, res) => {
-    console.log(req.params.username);
     UserSchema.user.findOne({username: req.params.username}).populate({
       path: 'pets'
     }).exec((err, user) => {
       if(err)
         res.send(err);
-      res.json(user);
+      res.json(user.pets);
     })
   })
 

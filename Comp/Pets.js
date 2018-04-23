@@ -8,22 +8,36 @@ export default class Pets extends React.Component {
     this.state = {
       heightVals: [],
       showVals: [],
-      checkBox: false,
+      checkBox: [],
       displayCheckBox: 'none',
+      petId: "",
+      clickTarget: ""
     }
+    this.postMyPets = this.postMyPets.bind(this);
   }
 
   componentDidMount(){
+    let parentState = this.props.parentState;
     let boxHeight = [];
     let show = [];
     let checkBox = [];
-    for(var i = 0; i < this.props.parentState.data.length; i++) {
+    let checker = false;
+    for(let i = 0; i < parentState.data.length; i++) {
+      checker = false;
       boxHeight.push(100);
       show.push('none');
+      for(let j = 0; j < parentState.userData.length; j++){
+        if(parentState.userData[j]._id == parentState.data[i]._id) {
+          checkBox.push(true);
+          checker = true;
+        }
+      }
+      if(checker == false) {
       checkBox.push(false);
+      }
     }
     this.setState({ heightVals: boxHeight, showVals: show, checkBox: checkBox});
-    if(this.props.parentState.isLogged == true) {
+    if(parentState.isLogged == true) {
       this.setState({
         displayCheckBox: 'flex'
       })
@@ -32,6 +46,48 @@ export default class Pets extends React.Component {
         displayCheckBox: 'none'
       })
     }
+  }
+
+  postMyPets() {
+    setTimeout(() => {
+      if(this.state.checkBox[this.state.clickTarget] == true) {
+        fetch('http://localhost:5000/savePets', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username: this.props.parentState.username,
+            _id: this.state.petId,
+          })
+        })
+        .then((res) => {
+          return res.json();
+        })
+        .catch((err) => {
+          return err;
+        })
+      } else {
+        fetch('http://localhost:5000/savePets', {
+          method: 'DELETE',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username: this.props.parentState.username,
+            _id: this.state.petId,
+          })
+        })
+        .then((res) => {
+          return res.json();
+        })
+        .catch((err) => {
+          return err;
+        })
+      }
+    }, 100)
   }
 
   render() {
@@ -97,7 +153,8 @@ export default class Pets extends React.Component {
                         }
                       }
                     }
-                    this.setState({checkBox: checkBox})
+                    this.setState({checkBox: checkBox, petId: data[i]._id, clickTarget: i});
+                    this.postMyPets();
                   }}
                 />
               </View>
