@@ -27,7 +27,7 @@ export default class Login extends React.Component {
       if(res.status != 401) {
         this.props.changeState({
           isLogged: true,
-          display: 'MyPets',
+          display: 'LandingPage',
           username: this.state.username,
         });
       } else {
@@ -59,6 +59,7 @@ export default class Login extends React.Component {
           value={this.state.password.split(" ").join("").trim()}
           placeholder='Enter here'
           autoCapitalize='none'
+          secureTextEntry={true}
         />
         <Text>{this.state.message}</Text>
         <Button
@@ -73,10 +74,6 @@ export default class Login extends React.Component {
         <Button
           title='Add Pet'
           onPress = {()=> this.props.changeState({display: 'EnterPets'})}
-        />
-        <Button
-          title='Test Page'
-          onPress = {()=> this.props.changeState({display: 'Test'})}
         />
       </View>
     )

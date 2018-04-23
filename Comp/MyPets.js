@@ -5,10 +5,10 @@ export default class MyPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      myPets: "",
+      myPets: '',
       heightVals: [],
       showVals: [],
-      petId: "",
+      petId: '',
     }
   }
 
@@ -59,7 +59,7 @@ componentDidMount() {
     let show = [];
     for(var i = 0; i < this.state.myPets.length; i++) {
       boxHeight.push(100);
-      show.push("none");
+      show.push('none');
     }
     this.setState({ heightVals: boxHeight, showVals: show });
   })
@@ -79,13 +79,13 @@ componentDidMount() {
             for (var j = 0; j < boxHeight.length; j++) {
               if (boxHeight[j] == '100%') {
                 boxHeight[j] = 100;
-                show[j] = "none";
+                show[j] = 'none';
               } else if (i == j) {
                boxHeight[j] = '100%';
-               show[j] = "flex";
+               show[j] = 'flex';
              } else {
                boxHeight[j] = 100;
-               show[j] = "none";
+               show[j] = 'none';
              }
             }
             this.setState({
@@ -104,33 +104,21 @@ componentDidMount() {
             </Text>
             <View style={{
               display: this.state.showVals[i],
-              paddingLeft: "10%",
-              paddingTop: "10%"
+              paddingLeft: '10%',
+              paddingTop: '10%'
               }}>
-              <Text>
-                Shelter: {data[i].shelter}
-              </Text>
-              <Text>
-                Location: {data[i].location}
-              </Text>
-              <Text>
-                Breed: {data[i].breed}
-              </Text>
-              <Text>
-                Age: {data[i].age}
-              </Text>
-              <Text>
-                Gender: {data[i].gender}
-              </Text>
-              <Text>
-                Bio: {data[i].bio}
-              </Text>
+              <Text>Shelter: {data[i].shelter}</Text>
+              <Text>Location: {data[i].location}</Text>
+              <Text>Breed: {data[i].breed}</Text>
+              <Text>Age: {data[i].age}</Text>
+              <Text>Gender: {data[i].gender}</Text>
+              <Text>Bio: {data[i].bio}</Text>
               <Button
-              onPress = {(e) => {
-                  this.setState({petId: data[i]._id})
-                  this.removeMyPets(e)
-                }}
-              title = "Remove from MyPets"
+                onPress = {(e) => {
+                    this.setState({petId: data[i]._id})
+                    this.removeMyPets(e)
+                  }}
+                title = 'Remove from MyPets'
               />
             </View>
           </View>
@@ -139,9 +127,9 @@ componentDidMount() {
     }
     return(
       <ScrollView style={styles.contentContainer}>
-      <View style={{paddingBottom:100}}>
-        {listOfPets}
-      </View>
+        <View style={{paddingBottom:100}}>
+          {listOfPets}
+        </View>
       </ScrollView>
     )
   }

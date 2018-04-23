@@ -8,7 +8,6 @@ import Login from './Comp/Login.js';
 import MyPets from './Comp/MyPets.js';
 import NavBar from './Comp/NavBar.js';
 import Pets from './Comp/Pets.js';
-import Test from './Comp/Test.js';
 import pawsLogo from './Images/pawsLogo.jpg';
 
 

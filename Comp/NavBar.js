@@ -23,6 +23,23 @@ export default class NavBar extends React.Component {
           />
         </View>
       )
+    } else if (this.props.parentState.username === 'Admin'){
+      return(
+        <View style={styles.navbar}>
+          <Button
+            onPress={() => this.props.changeState({isLogged: false, display: 'Login'})}
+            title='Logout'
+          />
+          <Button
+            onPress={() => this.props.changeState({display: 'LandingPage'})}
+            title='Home'
+          />
+          <Button
+            onPress={() => this.props.changeState({display: 'EnterPets'})}
+            title='Add Pets'
+          />
+        </View>
+      )
     } else if (this.props.parentState.isLogged == true){
       return(
         <View style={styles.navbar}>

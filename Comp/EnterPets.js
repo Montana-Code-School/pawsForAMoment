@@ -46,74 +46,74 @@ export default class EnterPets extends React.Component {
       render() {
         return(
           <View style = {petStyle.container}>
-          <Text>Shelter: </Text>
-          <TextInput
-            onChangeText={(shelter) => this.setState({shelter: shelter})}
-            value={this.state.shelter}
-            autoCapitalize = 'none'
-            placeholder = 'Enter here'
-          />
-          <Text>Location: </Text>
-          <TextInput
-            onChangeText={(location) => this.setState({location: location})}
-            value={this.state.location}
-            autoCapitalize = 'none'
-            placeholder = 'Enter here'
-          />
-          <Text>Pet Name: </Text>
-          <TextInput
-            onChangeText={(petname) => this.setState({petname: petname})}
-            value={this.state.petname}
-            autoCapitalize = 'none'
-            placeholder = 'Enter here'
-          />
-          <Text>Species: </Text>
-          <TextInput
-            onChangeText={(species) => this.setState({species: species})}
-            value={this.state.species}
-            autoCapitalize = 'none'
-            placeholder = 'Enter here'
-          />
-          <Text>Breed: </Text>
-          <TextInput
-            onChangeText={(breed) => this.setState({breed: breed})}
-            value={this.state.breed}
-            autoCapitalize = 'none'
-            placeholder = 'Enter here'
-          />
-          <Text>Age: </Text>
-          <TextInput
-            onChangeText={(age) => this.setState({age: age})}
-            value={this.state.age}
-            autoCapitalize = 'none'
-            placeholder = 'Enter here'
-          />
-          <Text>Gender: </Text>
-          <TextInput
-            onChangeText={(gender) => this.setState({gender: gender})}
-            value={this.state.gender}
-            autoCapitalize = 'none'
-            placeholder = 'Enter here'
-          />
-          <Text>Bio: </Text>
-          <TextInput
-            onChangeText={(bio) => this.setState({bio: bio})}
-            value={this.state.bio}
-            autoCapitalize = 'none'
-            placeholder = 'Enter here'
-          />
-          <Text>Image: </Text>
-          <TextInput
-            onChangeText={(image) => this.setState({image: image})}
-            value={this.state.image}
-            autoCapitalize = 'none'
-            placeholder = 'Enter here'
-          />
-          <Button
-            title="Submit"
-            onPress={(e) => this.addingNewPets(e)}
-          />
-          <Text>{this.state.message}</Text>
+            <Text>Shelter: </Text>
+            <TextInput
+              onChangeText={(shelter) => this.setState({shelter: shelter})}
+              value={this.state.shelter}
+              autoCapitalize = 'none'
+              placeholder = 'Enter here'
+            />
+            <Text>Location: </Text>
+            <TextInput
+              onChangeText={(location) => this.setState({location: location})}
+              value={this.state.location}
+              autoCapitalize = 'none'
+              placeholder = 'Enter here'
+            />
+            <Text>Pet Name: </Text>
+            <TextInput
+              onChangeText={(petname) => this.setState({petname: petname})}
+              value={this.state.petname}
+              autoCapitalize = 'none'
+              placeholder = 'Enter here'
+            />
+            <Text>Species: </Text>
+            <TextInput
+              onChangeText={(species) => this.setState({species: species})}
+              value={this.state.species}
+              autoCapitalize = 'none'
+              placeholder = 'Enter here'
+            />
+            <Text>Breed: </Text>
+            <TextInput
+              onChangeText={(breed) => this.setState({breed: breed})}
+              value={this.state.breed}
+              autoCapitalize = 'none'
+              placeholder = 'Enter here'
+            />
+            <Text>Age: </Text>
+            <TextInput
+              onChangeText={(age) => this.setState({age: age})}
+              value={this.state.age}
+              autoCapitalize = 'none'
+              placeholder = 'Enter here'
+            />
+            <Text>Gender: </Text>
+            <TextInput
+              onChangeText={(gender) => this.setState({gender: gender})}
+              value={this.state.gender}
+              autoCapitalize = 'none'
+              placeholder = 'Enter here'
+            />
+            <Text>Bio: </Text>
+            <TextInput
+              onChangeText={(bio) => this.setState({bio: bio})}
+              value={this.state.bio}
+              autoCapitalize = 'none'
+              placeholder = 'Enter here'
+            />
+            <Text>Image: </Text>
+            <TextInput
+              onChangeText={(image) => this.setState({image: image})}
+              value={this.state.image}
+              autoCapitalize = 'none'
+              placeholder = 'Enter here'
+            />
+            <Button
+              onPress={(e) => this.addingNewPets(e)}
+              title='Submit'
+            />
+            <Text>{this.state.message}</Text>
           </View>
         )
       }

@@ -110,3 +110,5 @@ _______
 - Inserted button into MyPets to remove pets from that location.
 - Added pictures to LandingPage.
 - Changed login initial login route to LandingPage.
+- Minor styling
+- Can only access EnterPets if you are Admin (in NavBar)

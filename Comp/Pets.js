@@ -10,8 +10,8 @@ export default class Pets extends React.Component {
       showVals: [],
       checkBox: [],
       displayCheckBox: 'none',
-      petId: "",
-      clickTarget: ""
+      petId: '',
+      clickTarget: '',
     }
     this.postMyPets = this.postMyPets.bind(this);
   }
@@ -166,9 +166,9 @@ export default class Pets extends React.Component {
     }
     return(
       <ScrollView style={styles.contentContainer}>
-      <View style={{paddingBottom:100}}>
-        {listOfPets}
-      </View>
+        <View style={{paddingBottom:100}}>
+          {listOfPets}
+        </View>
       </ScrollView>
     )
   }
