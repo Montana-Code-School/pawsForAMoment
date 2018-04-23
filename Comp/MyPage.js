@@ -12,6 +12,8 @@ export default class MyPage extends React.Component {
   }
 
 componentDidMount() {
+  let promise = new Promise((res, rej) => {
+
   fetch('http://localhost:5000/displayPets/' + this.props.parentState.username)
     .then((res) => {
       return res.json();
@@ -21,21 +23,24 @@ componentDidMount() {
       this.setState({
         myPets: pets.pets
       })
-      console.log(pets.pets[0])
+      res();
     })
 
     .catch((err) => {
       console.log(err)
-      return err;
+      rej();
     })
+  })
 
+  promise.then(() => {
     let boxHeight = [];
     let show = [];
-    for(var i = 0; i < this.state.myPets; i++) {
+    for(var i = 0; i < this.state.myPets.length; i++) {
       boxHeight.push(100);
       show.push("none");
     }
     this.setState({ heightVals: boxHeight, showVals: show });
+  })
 }
 
   render() {
@@ -65,6 +70,7 @@ componentDidMount() {
               heightVals:boxHeight,
               showVals:show
             })
+            console.log(this.state.showVals);
           }}>
           <Image
             source={{uri: data[i].image}}
@@ -76,7 +82,7 @@ componentDidMount() {
               {data[i].petname}
             </Text>
             <View style={{
-              display:this.state.showVals[i],
+              display: this.state.showVals[i],
               paddingLeft: "10%",
               paddingTop: "10%"
               }}>
@@ -121,7 +127,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    height: 100,
     backgroundColor: '#edeeef',
     marginBottom: 10,
     paddingBottom: '10%',
