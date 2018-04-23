@@ -24,7 +24,7 @@ app.use(bodyParser.json());
 
 createUserRouter.use((req, res, next) => {
   console.log('something is happening');
-  return UserSchema.findOne({username: req.body.username}, (userErr, username) => {
+  return UserSchema.user.findOne({username: req.body.username}, (userErr, username) => {
     if (userErr || username) {
       return res.status(401).send('Something is broken!')
     }
@@ -50,11 +50,10 @@ createUserRouter.route('/')
 
 userAuthRouter.use((req, res, next) => {
   console.log('something is happening');
-  return UserSchema.findOne({
+  return UserSchema.user.findOne({
     username: req.body.username,
     password: req.body.password
-  },
-  (userErr, username) => {
+  }, (userErr, username) => {
     if(userErr || !username) {
       return res.status(401).send('Incorrect Login information')
     }
@@ -66,7 +65,7 @@ userAuthRouter.use((req, res, next) => {
 
 userAuthRouter.route('/')
   .post((req, res) => {
-    UserSchema.findOne({username: req.body.username}, (err, userId) => {
+    UserSchema.user.findOne({username: req.body.username}, (err, userId) => {
       if(err)
         res.send(err);
       res.json(userId.username);
@@ -109,7 +108,7 @@ savePetsRouter.route('/')
     PetSchema.pet.findById(req.body._id, (err, pet) => {
       if(err)
         res.send(err);
-      UserSchema.findOne({username: req.body.username}, (err, user) => {
+      UserSchema.user.findOne({username: req.body.username}, (err, user) => {
         user.pets.push(pet);
         user.save();
         res.send(user);
@@ -122,16 +121,9 @@ savePetsRouter.route('/')
 displayPetsRouter.route('/:username')
   .get((req, res) => {
     console.log(req.params.username);
-    // UserSchema.userId.findOne({username: req.params.username}).populate({
-    //   path: 'pets'
-    // }).exec((err, user) => {
-    //   console.log(user);
-    //   if(err)
-    //     res.send(err);
-    //   res.json(user);
-    // })
-    UserSchema.userId.findOne({'username': req.params.username}, (err, user) => {
-      console.log(user);
+    UserSchema.user.findOne({username: req.params.username}).populate({
+      path: 'pets'
+    }).exec((err, user) => {
       if(err)
         res.send(err);
       res.json(user);

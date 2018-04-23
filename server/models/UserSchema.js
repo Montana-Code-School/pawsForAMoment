@@ -4,13 +4,13 @@ const UserSchema = new Schema({
   username: String,
   password: String,
   pets:[{
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'pet',
   }]
 });
 
-let userId = mongoose.model('userId', UserSchema);
+let user = mongoose.model('user', UserSchema);
 module.exports = {
-  userId: userId,
+  user: user,
   UserSchema: UserSchema
 };
