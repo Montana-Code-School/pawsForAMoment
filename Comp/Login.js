@@ -27,7 +27,7 @@ export default class Login extends React.Component {
       if(res.status != 401) {
         this.props.changeState({
           isLogged: true,
-          display: 'MyPage',
+          display: 'MyPets',
           username: this.state.username,
         });
       } else {
