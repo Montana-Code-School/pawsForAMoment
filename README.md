@@ -112,3 +112,7 @@ _______
 - Changed login initial login route to LandingPage.
 - Minor styling
 - Can only access EnterPets if you are Admin (in NavBar)
+
+### 04/24/2018
+- Changed EnterPets to make species input require Dog or Cat
+- Added query slider to search pets by species

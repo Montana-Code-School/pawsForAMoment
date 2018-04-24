@@ -32,7 +32,7 @@ removeMyPets() {
     .catch((err) => {
       return err;
     })
-  }, 100)
+  }, 50)
 }
 
 

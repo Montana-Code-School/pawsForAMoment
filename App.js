@@ -17,7 +17,7 @@ export default class App extends React.Component {
     this.state = {
       display: 'LandingPage',
       isLogged: true,
-      username: 'Luna',
+      username: 'Admin',
       // ^^ change to false for production, only true for testing porpoises
       data: [],
       userData: [],

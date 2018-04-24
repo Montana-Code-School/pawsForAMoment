@@ -74,7 +74,7 @@ userAuthRouter.route('/')
 
 //________________________________________________________________PETS_ROUTE__
 
-petRouter.route('/')
+petRouter.route('/:species')
   .post((req, res) => {
     const petId = new PetSchema.pet();
     petId.shelter = req.body.shelter;
@@ -94,7 +94,13 @@ petRouter.route('/')
   })
 
   .get((req, res) => {
-    PetSchema.pet.find((err, pet) => {
+    let query = null;
+    if(req.params.species == 1) {
+      query = {species:'Cat'}
+    } else if (req.params.species == 2) {
+      query = {species:'Dog'}
+    }
+    PetSchema.pet.find(query, (err, pet) => {
       if(err)
         res.send(err);
       res.json(pet);
@@ -149,6 +155,19 @@ displayPetsRouter.route('/:username')
     })
   })
 
+
+//____________________________________________________________________________
+
+// displayPetsRouter.route('/:username')
+//   .get((req, res) => {
+//     UserSchema.user.findOne({username: req.params.username}).populate({
+//       path: 'pets'
+//     }).exec((err, user) => {
+//       if(err)
+//         res.send(err);
+//       res.json(user.pets);
+//     })
+//   })
 
 //____________________________________________________________________________
 

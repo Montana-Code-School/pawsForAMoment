@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default class EnterPets extends React.Component {
   constructor(props) {
@@ -20,6 +20,7 @@ export default class EnterPets extends React.Component {
 
   addingNewPets(e) {
     e.preventDefault();
+    if (this.state.species == 'Cat' || this.state.species == 'Dog') {
       fetch('http://localhost:5000/pets', {
         method: 'POST',
         headers: {
@@ -41,7 +42,12 @@ export default class EnterPets extends React.Component {
       this.setState({
         message: 'Pet Added!'
       }))
+    } else {
+      this.setState({
+        message: 'Species must be Cat or Dog'
+      })
     }
+  }
 
       render() {
         return(
@@ -67,7 +73,7 @@ export default class EnterPets extends React.Component {
               autoCapitalize = 'none'
               placeholder = 'Enter here'
             />
-            <Text>Species: </Text>
+            <Text>Species (must be Cat or Dog): </Text>
             <TextInput
               onChangeText={(species) => this.setState({species: species})}
               value={this.state.species}

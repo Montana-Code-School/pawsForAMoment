@@ -1,16 +1,17 @@
 import React from 'react';
-import { Button, Image, ScrollView, StyleSheet, Text, View, } from 'react-native';
+import { Button, Image, ScrollView, Slider, StyleSheet, Text, View } from 'react-native';
 
 export default class LandingPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       scrollPets: [],
+      query: 'All',
     }
   }
 
   componentDidMount() {
-    fetch('http://localhost:5000/pets')
+    fetch('http://localhost:5000/pets/default')
     .then((res) => {
       return res.json();
     })
@@ -45,7 +46,7 @@ export default class LandingPage extends React.Component {
 
   findPets(e) {
     let promise = new Promise((res, rej) => {
-      fetch('http://localhost:5000/pets')
+      fetch('http://localhost:5000/pets/' + this.state.query)
       .then((res) => {
        return res.json();
       })
@@ -64,6 +65,12 @@ export default class LandingPage extends React.Component {
 
 
   render() {
+    let species = 'All';
+    if(this.state.query == 1) {
+      species = 'Cat'
+    } else if (this.state.query == 2) {
+      species = 'Dog'
+    }
     return(
       <View style={styles.container}>
         <ScrollView
@@ -75,6 +82,15 @@ export default class LandingPage extends React.Component {
         >
           {this.state.scrollPets}
         </ScrollView>
+        <Text style={{paddingTop: 20}}>Filter by species: {species}</Text>
+        <Slider
+          style={{width:300}}
+          step={1}
+          minimumValue={0}
+          maximumValue={2}
+          value={this.state.query}
+          onValueChange={val => this.setState({query: val})}
+        />
         <Button
           style = {{fontSize: 100}}
           onPress={(e) => this.findPets(e)}
