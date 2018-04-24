@@ -21,7 +21,7 @@ export default class EnterPets extends React.Component {
   addingNewPets(e) {
     e.preventDefault();
     if (this.state.species == 'Cat' || this.state.species == 'Dog') {
-      fetch('http://localhost:5000/pets', {
+      fetch('http://localhost:5000/pets/default', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -51,65 +51,74 @@ export default class EnterPets extends React.Component {
 
       render() {
         return(
-          <View style = {petStyle.container}>
-            <Text>Shelter: </Text>
+          <View style = {styles.container}>
+            <Text style={styles.textInput}>Shelter: </Text>
             <TextInput
+              style={styles.textInput}
               onChangeText={(shelter) => this.setState({shelter: shelter})}
               value={this.state.shelter}
               autoCapitalize = 'none'
               placeholder = 'Enter here'
             />
-            <Text>Location: </Text>
+            <Text style={styles.textInput}>Location: </Text>
             <TextInput
+              style={styles.textInput}
               onChangeText={(location) => this.setState({location: location})}
               value={this.state.location}
               autoCapitalize = 'none'
               placeholder = 'Enter here'
             />
-            <Text>Pet Name: </Text>
+            <Text style={styles.textInput}>Pet Name: </Text>
             <TextInput
+              style={styles.textInput}
               onChangeText={(petname) => this.setState({petname: petname})}
               value={this.state.petname}
               autoCapitalize = 'none'
               placeholder = 'Enter here'
             />
-            <Text>Species (must be Cat or Dog): </Text>
+            <Text style={styles.textInput}>Species (must be Cat or Dog): </Text>
             <TextInput
+              style={styles.textInput}
               onChangeText={(species) => this.setState({species: species})}
               value={this.state.species}
               autoCapitalize = 'none'
               placeholder = 'Enter here'
             />
-            <Text>Breed: </Text>
+            <Text style={styles.textInput}>Breed: </Text>
             <TextInput
+              style={styles.textInput}
               onChangeText={(breed) => this.setState({breed: breed})}
               value={this.state.breed}
               autoCapitalize = 'none'
               placeholder = 'Enter here'
             />
-            <Text>Age: </Text>
+            <Text style={styles.textInput}>Age: </Text>
             <TextInput
+              style={styles.textInput}
               onChangeText={(age) => this.setState({age: age})}
               value={this.state.age}
               autoCapitalize = 'none'
               placeholder = 'Enter here'
             />
-            <Text>Gender: </Text>
+            <Text style={styles.textInput}>Gender: </Text>
             <TextInput
+              style={styles.textInput}
               onChangeText={(gender) => this.setState({gender: gender})}
               value={this.state.gender}
               autoCapitalize = 'none'
               placeholder = 'Enter here'
             />
-            <Text>Bio: </Text>
+            <Text style={styles.textInput}>Bio: </Text>
             <TextInput
+              style={styles.textInput}
               onChangeText={(bio) => this.setState({bio: bio})}
               value={this.state.bio}
               autoCapitalize = 'none'
               placeholder = 'Enter here'
             />
-            <Text>Image: </Text>
+            <Text style={styles.textInput}>Image: </Text>
             <TextInput
+              style={styles.textInput}
               onChangeText={(image) => this.setState({image: image})}
               value={this.state.image}
               autoCapitalize = 'none'
@@ -125,12 +134,15 @@ export default class EnterPets extends React.Component {
       }
     }
 
-    const petStyle = StyleSheet.create({
+    const styles = StyleSheet.create({
       container: {
         flex: 1,
-        backgroundColor: '#fff',
         flexDirection: 'column',
         justifyContent: 'center',
-        alignItems: 'flex-start'
+        alignItems: 'center',
+        paddingBottom: 100,
       },
+      textInput: {
+        fontSize: 16,
+      }
     });

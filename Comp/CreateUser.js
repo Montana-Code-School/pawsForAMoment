@@ -53,24 +53,27 @@ export default class CreateUser extends React.Component {
 
   render() {
     return(
-      <View>
-        <Text>Username: </Text>
+      <View style={styles.container}>
+        <Text style={styles.textInput}>Username: </Text>
         <TextInput
+          style={styles.textInput}
           onChangeText={(username) => this.setState({username: username})}
           value={this.state.username.split(' ').join('')}
           autoCapitalize='none'
           placeholder='Enter here'
         />
-        <Text>Password: </Text>
+        <Text style={styles.textInput}>Password: </Text>
         <TextInput
+          style={styles.textInput}
           onChangeText={(password) => this.setState({password: password})}
           value={this.state.password.split(' ').join('')}
           autoCapitalize='none'
           placeholder='Enter here'
           secureTextEntry={true}
         />
-        <Text>Confirm Password: </Text>
+        <Text style={styles.textInput}>Confirm Password: </Text>
         <TextInput
+          style={styles.textInput}
           onChangeText={(password) => this.setState({checkPassword: password})}
           value={this.state.checkPassword.split(' ').join('')}
           autoCapitalize='none'
@@ -86,3 +89,15 @@ export default class CreateUser extends React.Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingBottom: 200,
+  },
+  textInput: {
+    fontSize: 20,
+  }
+})

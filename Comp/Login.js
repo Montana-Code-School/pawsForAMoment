@@ -45,16 +45,18 @@ export default class Login extends React.Component {
 
   render() {
     return(
-      <View>
-        <Text>Username: </Text>
+      <View style={styles.container}>
+        <Text style={styles.textInput}>Username: </Text>
         <TextInput
+          style={styles.textInput}
           onChangeText={(username) => this.setState({username: username})}
           value={this.state.username.split(" ").join("").trim()}
           placeholder='Enter here'
           autoCapitalize='none'
         />
-        <Text>Password: </Text>
+        <Text style={styles.textInput}>Password: </Text>
         <TextInput
+          style={styles.textInput}
           onChangeText={(password) => this.setState({password: password})}
           value={this.state.password.split(" ").join("").trim()}
           placeholder='Enter here'
@@ -66,16 +68,27 @@ export default class Login extends React.Component {
           onPress={(e) => this.login(e)}
           title='Submit'
         />
-        <Text>Don't have an account? Make one </Text>
-        <Button
-          onPress={()=> this.props.changeState({display: 'CreateUser'})}
-          title='here!'
-        />
-        <Button
-          title='Add Pet'
-          onPress = {()=> this.props.changeState({display: 'EnterPets'})}
-        />
+        <View style={{flexDirection:'row'}}>
+          <Text style={{fontSize: 17}}>Don't have an account? Make one </Text>
+          <Text
+            style = {{color:'#007AFF', fontWeight: 'bold', fontSize: 17}}
+            onPress={()=> this.props.changeState({display: 'CreateUser'})}>
+            here!
+          </Text>
+        </View>
       </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingBottom: 200,
+  },
+  textInput: {
+    fontSize: 20
+  }
+})

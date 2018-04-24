@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     height: 100,
-    backgroundColor: '#edeeef',
+    backgroundColor: '#2e9bab',
     marginBottom: 10,
     paddingBottom: '10%',
     flexWrap: 'wrap'

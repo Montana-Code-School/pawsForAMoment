@@ -8,7 +8,8 @@ import Login from './Comp/Login.js';
 import MyPets from './Comp/MyPets.js';
 import NavBar from './Comp/NavBar.js';
 import Pets from './Comp/Pets.js';
-import pawsLogo from './Images/pawsLogo.jpg';
+import pawsLogo from './Images/greenPawsLogo.jpg';
+import mountains from './Images/pawsMountains.jpg';
 
 
 export default class App extends React.Component {
@@ -18,7 +19,6 @@ export default class App extends React.Component {
       display: 'LandingPage',
       isLogged: true,
       username: 'Admin',
-      // ^^ change to false for production, only true for testing porpoises
       data: [],
       userData: [],
     }
@@ -108,9 +108,13 @@ export default class App extends React.Component {
          />
          <Image
            source={pawsLogo}
-           style={styles.image}
+           style={styles.imageLogo}
          />
         {this.stackNavigator()}
+        <Image
+          source={mountains}
+          style={styles.imageMtn}
+        />
       </View>
     )
   }
@@ -119,15 +123,25 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#c0f2dc',
   },
-  image: {
+  imageLogo: {
     alignSelf: 'center',
     height: 65,
     width: 350,
     resizeMode: Image.resizeMode.contain,
   },
-
+  imageMtn: {
+    alignSelf: 'center',
+    justifyContent: 'flex-end',
+    position: 'absolute',
+    top: 525,
+    zIndex: -1,
+    height: 150,
+    width: 390,
+    margin: 0,
+    resizeMode: Image.resizeMode.contain,
+  }
 });
 
 console.disableYellowBox = true;

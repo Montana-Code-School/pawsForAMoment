@@ -1,7 +1,6 @@
  # PawsForAMoment
 
 ## PawsForAMoment is a mobile application that aggregates animal shelters across the state of Montana.
-
 ______
 
 #### If you're new to PawsForAMoment...
@@ -17,6 +16,13 @@ ______
 - app is served on a simulator or through expo on your device
 
 #### PawsForAMoment Features...
+- Future Pet Parents can view available animals for adoption across the state of Montana on one platform
+- Users have ability to log into app and save animals they're interested in to MyPets page
+- When viewing pets(on find Pets or MyPets pages) users can click on image to display pet bio
+  - When bio is rendered can click slider to add pets to MyPets pages
+- Can filter pet search by species with slider on bottom of landing page
+- Shelter Admin have ability to add Pets to database
+- All available pet images are displayed on landing page
 
 #### Known bugs...
 
@@ -116,3 +122,6 @@ _______
 ### 04/24/2018
 - Changed EnterPets to make species input require Dog or Cat
 - Added query slider to search pets by species
+- Added styling, background, and images to all pages
+- Entered more animals into database
+- Added features section to README

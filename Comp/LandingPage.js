@@ -74,7 +74,7 @@ export default class LandingPage extends React.Component {
     return(
       <View style={styles.container}>
         <ScrollView
-          style = {{flex: 1, height: 300}}
+          style = {{flex: 1, height: 300, top: -25}}
           horizontal = {true}
           snapToInterval = {310}
           snapToAlignment = {'center'}
@@ -82,20 +82,22 @@ export default class LandingPage extends React.Component {
         >
           {this.state.scrollPets}
         </ScrollView>
-        <Text style={{paddingTop: 20}}>Filter by species: {species}</Text>
-        <Slider
-          style={{width:300}}
-          step={1}
-          minimumValue={0}
-          maximumValue={2}
-          value={this.state.query}
-          onValueChange={val => this.setState({query: val})}
-        />
-        <Button
-          style = {{fontSize: 100}}
-          onPress={(e) => this.findPets(e)}
-          title='Find pets!'
-        />
+        <View style={{top: -15, alignItems: 'center'}}>
+          <Text style={{paddingTop: 20, fontSize: 16}}>Filter by species: {species}</Text>
+          <Slider
+            style={{width:300}}
+            step={1}
+            minimumValue={0}
+            maximumValue={2}
+            value={this.state.query}
+            onValueChange={val => this.setState({query: val})}
+          />
+          <Button
+            style = {{fontSize: 100}}
+            onPress={(e) => this.findPets(e)}
+            title='Find pets!'
+          />
+        </View>
       </View>
     )
   }
@@ -104,9 +106,7 @@ export default class LandingPage extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     flexDirection: 'column',
-    // justifyContent: 'space-around',
     alignItems: 'center',
     marginTop: 50,
     marginBottom: 75

@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    backgroundColor: '#edeeef',
+    backgroundColor: '#2e9bab',
     marginBottom: 10,
     paddingBottom: '10%',
     flexWrap: 'wrap'
