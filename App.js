@@ -17,8 +17,8 @@ export default class App extends React.Component {
     super(props)
     this.state = {
       display: 'LandingPage',
-      isLogged: true,
-      username: 'Admin',
+      isLogged: false,
+      username: '',
       data: [],
       userData: [],
     }

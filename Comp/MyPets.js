@@ -113,13 +113,15 @@ componentDidMount() {
               <Text>Age: {data[i].age}</Text>
               <Text>Gender: {data[i].gender}</Text>
               <Text>Bio: {data[i].bio}</Text>
-              <Button
+              <Text
                 onPress = {(e) => {
                     this.setState({petId: data[i]._id})
                     this.removeMyPets(e)
                   }}
-                title = 'Remove from MyPets'
-              />
+                style={{color: '#fff', fontSize: 16, fontWeight: 'bold', paddingTop: 15}}
+                >
+                  Remove from MyPets
+              </Text>
             </View>
           </View>
         </TouchableOpacity>
@@ -151,6 +153,7 @@ const styles = StyleSheet.create({
   petButtonText: {
     paddingLeft: '35%',
     paddingTop: '14%',
+    color: '#fff',
     fontSize: 20,
     fontWeight: 'bold',
     alignItems: 'center'

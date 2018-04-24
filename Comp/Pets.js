@@ -193,6 +193,7 @@ const styles = StyleSheet.create({
     paddingTop: '14%',
     fontSize: 20,
     fontWeight: 'bold',
+    color: '#fff',
     alignItems: 'center'
   },
   petImage: {
@@ -212,5 +213,6 @@ const styles = StyleSheet.create({
   savePetsButton: {
     fontSize: 16,
     fontWeight: 'bold',
+    color: '#fff',
   }
 });
