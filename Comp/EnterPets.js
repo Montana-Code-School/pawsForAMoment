@@ -18,6 +18,7 @@ export default class EnterPets extends React.Component {
     }
   }
 
+  // Function to add new pets to database, currently must only be cat or dog.
   addingNewPets(e) {
     e.preventDefault();
     if (this.state.species == 'Cat' || this.state.species == 'Dog') {
@@ -51,78 +52,78 @@ export default class EnterPets extends React.Component {
 
       render() {
         return(
-          <View style = {styles.container}>
+          <View style={styles.container}>
             <Text style={styles.textInput}>Shelter: </Text>
             <TextInput
               style={styles.textInput}
               onChangeText={(shelter) => this.setState({shelter: shelter})}
               value={this.state.shelter}
-              autoCapitalize = 'none'
-              placeholder = 'Enter here'
+              autoCapitalize='none'
+              placeholder='Enter here'
             />
             <Text style={styles.textInput}>Location: </Text>
             <TextInput
               style={styles.textInput}
               onChangeText={(location) => this.setState({location: location})}
               value={this.state.location}
-              autoCapitalize = 'none'
-              placeholder = 'Enter here'
+              autoCapitalize='none'
+              placeholder='Enter here'
             />
             <Text style={styles.textInput}>Pet Name: </Text>
             <TextInput
               style={styles.textInput}
               onChangeText={(petname) => this.setState({petname: petname})}
               value={this.state.petname}
-              autoCapitalize = 'none'
-              placeholder = 'Enter here'
+              autoCapitalize='none'
+              placeholder='Enter here'
             />
             <Text style={styles.textInput}>Species (must be Cat or Dog): </Text>
             <TextInput
               style={styles.textInput}
               onChangeText={(species) => this.setState({species: species})}
               value={this.state.species}
-              autoCapitalize = 'none'
-              placeholder = 'Enter here'
+              autoCapitalize='none'
+              placeholder='Enter here'
             />
             <Text style={styles.textInput}>Breed: </Text>
             <TextInput
               style={styles.textInput}
               onChangeText={(breed) => this.setState({breed: breed})}
               value={this.state.breed}
-              autoCapitalize = 'none'
-              placeholder = 'Enter here'
+              autoCapitalize='none'
+              placeholder='Enter here'
             />
             <Text style={styles.textInput}>Age: </Text>
             <TextInput
               style={styles.textInput}
               onChangeText={(age) => this.setState({age: age})}
               value={this.state.age}
-              autoCapitalize = 'none'
-              placeholder = 'Enter here'
+              autoCapitalize='none'
+              placeholder='Enter here'
             />
             <Text style={styles.textInput}>Gender: </Text>
             <TextInput
               style={styles.textInput}
               onChangeText={(gender) => this.setState({gender: gender})}
               value={this.state.gender}
-              autoCapitalize = 'none'
-              placeholder = 'Enter here'
+              autoCapitalize='none'
+              placeholder='Enter here'
             />
             <Text style={styles.textInput}>Bio: </Text>
             <TextInput
               style={styles.textInput}
               onChangeText={(bio) => this.setState({bio: bio})}
               value={this.state.bio}
-              autoCapitalize = 'none'
-              placeholder = 'Enter here'
+              autoCapitalize='none'
+              placeholder='Enter here'
             />
             <Text style={styles.textInput}>Image: </Text>
             <TextInput
               style={styles.textInput}
               onChangeText={(image) => this.setState({image: image})}
               value={this.state.image}
-              autoCapitalize = 'none'
-              placeholder = 'Enter here'
+              autoCapitalize='none'
+              placeholder='Enter here'
             />
             <Button
               onPress={(e) => this.addingNewPets(e)}

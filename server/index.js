@@ -134,7 +134,6 @@ savePetsRouter.route('/')
     UserSchema.user.findOne({username: req.body.username}, (err, user) => {
       for(let i = 0; i < user.pets.length; i++) {
         if(req.body._id == user.pets[i]) {
-          console.log("working bloop");
           user.pets.splice(i, 1)
           user.save();
         }
@@ -158,18 +157,6 @@ displayPetsRouter.route('/:username')
 
 //____________________________________________________________________________
 
-// displayPetsRouter.route('/:username')
-//   .get((req, res) => {
-//     UserSchema.user.findOne({username: req.params.username}).populate({
-//       path: 'pets'
-//     }).exec((err, user) => {
-//       if(err)
-//         res.send(err);
-//       res.json(user.pets);
-//     })
-//   })
-
-//____________________________________________________________________________
 
 app.use('/userAuth', userAuthRouter);
 app.use('/createUser', createUserRouter);

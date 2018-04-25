@@ -11,6 +11,8 @@ export default class Login extends React.Component {
     }
   }
 
+  // Function to check whether username/password exist in database, redirects to
+  // landing page if check goes through
   login(e) {
     fetch('http://localhost:5000/userAuth', {
       method: 'POST',
@@ -50,7 +52,7 @@ export default class Login extends React.Component {
         <TextInput
           style={styles.textInput}
           onChangeText={(username) => this.setState({username: username})}
-          value={this.state.username.split(" ").join("").trim()}
+          value={this.state.username.split(' ').join('').trim()}
           placeholder='Enter here'
           autoCapitalize='none'
         />
@@ -58,7 +60,7 @@ export default class Login extends React.Component {
         <TextInput
           style={styles.textInput}
           onChangeText={(password) => this.setState({password: password})}
-          value={this.state.password.split(" ").join("").trim()}
+          value={this.state.password.split(' ').join('').trim()}
           placeholder='Enter here'
           autoCapitalize='none'
           secureTextEntry={true}
@@ -71,7 +73,7 @@ export default class Login extends React.Component {
         <View style={{flexDirection:'row'}}>
           <Text style={{fontSize: 17}}>Don't have an account? Make one </Text>
           <Text
-            style = {{color:'#007AFF', fontWeight: 'bold', fontSize: 17}}
+            style={{color:'#007AFF', fontWeight: 'bold', fontSize: 17}}
             onPress={()=> this.props.changeState({display: 'CreateUser'})}>
             here!
           </Text>

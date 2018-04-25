@@ -30,6 +30,7 @@ export default class App extends React.Component {
     this.setState(obj);
   }
 
+  // Function to create navigation stack of different app pages
   stackNavigator() {
     switch(this.state.display) {
       case 'LandingPage':

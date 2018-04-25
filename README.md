@@ -24,7 +24,7 @@ ______
 - Shelter Admin have ability to add Pets to database
 - All available pet images are displayed on landing page
 
-#### Known bugs...
+## Please refer to Code of Conduct, Contributing file, and User story in the DOCS folder!
 
 _______
 

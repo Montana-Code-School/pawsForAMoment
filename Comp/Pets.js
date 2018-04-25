@@ -16,6 +16,9 @@ export default class Pets extends React.Component {
     this.postMyPets = this.postMyPets.bind(this);
   }
 
+//Function for dealing with our checkbox. If user is logged in they can save
+//the pets they want using the checkbox. If user is not logged in, the checkbox
+//will not show.
   componentDidMount(){
     let parentState = this.props.parentState;
     let boxHeight = [];
@@ -48,6 +51,7 @@ export default class Pets extends React.Component {
     }
   }
 
+  // Function to save or delete pets from MyPets page
   postMyPets() {
     setTimeout(() => {
       if(this.state.checkBox[this.state.clickTarget] == true) {
@@ -161,7 +165,6 @@ export default class Pets extends React.Component {
             </View>
           </View>
         </TouchableOpacity>
-
       ))
     }
     return(

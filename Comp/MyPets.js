@@ -12,6 +12,7 @@ export default class MyPage extends React.Component {
     }
   }
 
+// Function to remove pets from MyPets page via MyPets page
 removeMyPets() {
   setTimeout(() => {
     fetch('http://localhost:5000/savePets', {
@@ -36,7 +37,7 @@ removeMyPets() {
 }
 
 
-
+//Call to database to get pets that users have saved to their profile.
 componentDidMount() {
   let promise = new Promise((res, rej) => {
   fetch('http://localhost:5000/displayPets/' + this.props.parentState.username)

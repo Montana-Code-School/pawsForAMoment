@@ -12,6 +12,9 @@ export default class CreateUser extends React.Component {
     }
   }
 
+  // Function to add new users to the database, checks to make sure password and
+  // confirm password match, as well as check to make sure user does not already
+  // exist in database
   createUser(e) {
     e.preventDefault();
     if(this.state.password === this.state.checkPassword) {

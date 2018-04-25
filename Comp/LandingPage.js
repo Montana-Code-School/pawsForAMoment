@@ -10,6 +10,7 @@ export default class LandingPage extends React.Component {
     }
   }
 
+//call to our database to show our landing page pets.
   componentDidMount() {
     fetch('http://localhost:5000/pets/default')
     .then((res) => {
@@ -20,6 +21,7 @@ export default class LandingPage extends React.Component {
       for(let i = 0; i < data.length; i++) {
         petArr.push((
           <Image
+            key = {i}
             source = {{uri:data[i].image}}
             style = {{height: 300, width: 300, marginLeft:5, marginRight: 5}}
           />
@@ -29,7 +31,6 @@ export default class LandingPage extends React.Component {
         scrollPets: petArr
       })
     })
-    //dont delete stuff below this because its important i swear just hang on to it nw
     if(this.props.parentState.isLogged == true) {
       fetch('http://localhost:5000/displayPets/' + this.props.parentState.username)
       .then((res) => {
@@ -41,9 +42,10 @@ export default class LandingPage extends React.Component {
         })
       })
     }
-    //dont delete stuff above its important dolphinately
   }
 
+//find pets button. Queries our database when button is clicked. There is now
+//the option to search cat, dog, or both.
   findPets(e) {
     let promise = new Promise((res, rej) => {
       fetch('http://localhost:5000/pets/' + this.state.query)
@@ -62,8 +64,6 @@ export default class LandingPage extends React.Component {
     })
   }
 
-
-
   render() {
     let species = 'All';
     if(this.state.query == 1) {
@@ -74,11 +74,11 @@ export default class LandingPage extends React.Component {
     return(
       <View style={styles.container}>
         <ScrollView
-          style = {{flex: 1, height: 300, top: -25}}
-          horizontal = {true}
-          snapToInterval = {310}
-          snapToAlignment = {'center'}
-          decelerationRate = {0}
+          style={{flex: 1, height: 300, top: -25}}
+          horizontal={true}
+          snapToInterval={310}
+          snapToAlignment={'center'}
+          decelerationRate={0}
         >
           {this.state.scrollPets}
         </ScrollView>
@@ -93,7 +93,7 @@ export default class LandingPage extends React.Component {
             onValueChange={val => this.setState({query: val})}
           />
           <Button
-            style = {{fontSize: 100}}
+            style={{fontSize: 100}}
             onPress={(e) => this.findPets(e)}
             title='Find pets!'
           />

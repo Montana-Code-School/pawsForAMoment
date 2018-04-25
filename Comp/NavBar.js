@@ -9,6 +9,7 @@ export default class NavBar extends React.Component {
     }
   }
 
+//NavBar that is persistent throughout the app.
   render() {
     if(this.props.parentState.isLogged == false){
       return(
